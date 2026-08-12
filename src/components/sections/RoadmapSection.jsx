@@ -28,7 +28,7 @@ const roadmapData = {
       { title: "Cari MUA", desc: "Filter berdasarkan lokasi, gaya, harga." },
       { title: "Cek Portofolio", desc: "Lihat hasil karya & rating MUA." },
       { title: "Hubungi Langsung", desc: "Chat atau telepon via tombol kontak." },
-      { title: "Booking & Selesai", desc: "Atur jadmul dan nikmati hasilnya." },
+      { title: "Booking & Selesai", desc: "Atur jadwalmu dan nikmati hasilnya." },
     ],
   },
 };
@@ -42,8 +42,8 @@ export default function RoadmapSection() {
   const stepsRef = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section id="program" className="bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <section className="bg-background py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-main mb-4">
@@ -57,14 +57,14 @@ export default function RoadmapSection() {
 
         {/* Tabs */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-surface rounded-md border border-border p-1">
+          <div className="inline-flex bg-surface border border-border rounded-full p-1">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 sm:px-5 py-2 text-xs sm:text-sm font-medium font-sans rounded-md transition-all ${
+                className={`px-4 sm:px-5 py-2 text-xs sm:text-sm font-medium font-sans rounded-full transition-all ${
                   activeTab === tab
-                    ? "bg-primary text-white shadow-soft"
+                    ? "bg-primary text-text-on-dark shadow-soft"
                     : "text-text-muted hover:text-text-main hover:bg-white"
                 }`}
               >
@@ -85,8 +85,8 @@ export default function RoadmapSection() {
                 style={{ animationDelay: `${index * 0.08}s` }}
               >
                 <div className="relative flex-shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-soft relative z-10">
-                    <span className="font-serif text-xl font-bold text-white">
+                  <div className="w-14 h-14 rounded-full bg-primary text-text-on-dark flex items-center justify-center shadow-soft relative z-10">
+                    <span className="font-serif text-xl font-bold">
                       {index + 1}
                     </span>
                   </div>

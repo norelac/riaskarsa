@@ -1,29 +1,38 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #625244;
-  --color-primary-hover: #584A3D;
-  --color-primary-ring: #6252441F;
-  --color-background: #FFFFFF;
-  --color-surface: #FBF9F4;
-  --color-border: #E8E2D6;
-  --color-border-hover: #BEB9AF;
-  --color-text-main: #1D1B1A;
-  --color-text-muted: #635E56;
-  --color-supporting-dark: #4E453E;
-  --color-supporting-medium: #7C6A5B;
-  --color-supporting-light: #D1C4BB;
+  /* ── Gold / Maroon Palette (Rias Karsa Merah) ── */
+  --color-primary: #E2C289;            /* Gold — CTA, active, focus */
+  --color-primary-hover: #C9A971;      /* Gold hover (15% darker) */
+  --color-primary-ring: #E2C2891F;     /* Focus ring glow (12% opacity) */
+  --color-background: #FFFFFF;         /* Light page background */
+  --color-background-dark: #210504;    /* Deep Maroon — dark sections */
+  --color-background-darker: #32110F;  /* Dark Maroon — workshop table bg */
+  --color-surface: #F9F7F2;            /* Cream surface / cards */
+  --color-border: #DCC0BD;            /* Blush Pink — borders & dividers */
+  --color-border-hover: #B8A597;       /* Blush Pink hover */
+  --color-text-main: #1D1B1A;          /* Near Black — primary text */
+  --color-text-muted: #635E56;         /* Muted text */
+  --color-text-on-dark: #F9F7F2;          /* Cream text on dark backgrounds */
+  --color-badge-error: #FF383C;           /* Red — Kuota Penuh badge */
 
-  --font-serif: var(--font-cormorant), 'Playfair Display', serif;
-  --font-sans: var(--font-jakarta), 'Inter', sans-serif;
+  --color-supporting-dark: #210504;       /* Deep Maroon — footer bg, dark sections */
+  --color-supporting-medium: #32110F;     /* Dark Maroon — workshop table bg */
+  --color-supporting-light: #DCC0BD;      /* Blush Pink — dividers, dark section text */
+
+  --font-serif: var(--font-playfair), 'Playfair Display', serif;
+  --font-sans: var(--font-dmsans), 'DM Sans', sans-serif;
 
   --spacing-18: 4.5rem;
   --spacing-22: 5.5rem;
 
+  --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-xl: 20px;       /* Card corners */
+  --radius-full: 9999px;   /* Pill buttons */
 
-  --shadow-soft: 0 4px 20px -2px rgba(98, 82, 68, 0.05);
+  --shadow-soft: 0 4px 20px -2px rgba(226, 194, 137, 0.08);
   --shadow-elevated: 0 10px 30px -4px rgba(29, 27, 26, 0.08);
 }
 
@@ -86,8 +95,8 @@ body {
 
 /* ── Pulse Glow ── */
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(98, 82, 68, 0.15); }
-  50% { box-shadow: 0 0 0 12px rgba(98, 82, 68, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(226, 194, 137, 0.18); }
+  50% { box-shadow: 0 0 0 12px rgba(226, 194, 137, 0); }
 }
 .animate-pulse-glow {
   animation: pulseGlow 2.5s ease-in-out infinite;

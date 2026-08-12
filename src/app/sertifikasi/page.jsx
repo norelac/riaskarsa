@@ -34,44 +34,44 @@ export default function SertifikasiPage() {
             Daftar Sertifikasi
           </h1>
           <p className="text-base text-text-muted">
-            Tingkatkan keahlianmu dengan program sertifikasi berstandar industri.
+            Tingkatkan kredibilitas dan keahlianmu dengan program sertifikasi standar industri.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-md border border-border p-6 md:p-8 shadow-soft flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="bg-surface border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">Nama Lengkap</label>
             <input type="text" name="name" required value={form.name} onChange={handleChange}
               placeholder="Masukkan nama lengkap"
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
           </div>
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">Email</label>
             <input type="email" name="email" required value={form.email} onChange={handleChange}
               placeholder="contoh@email.com"
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
           </div>
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">No. WhatsApp</label>
             <input type="tel" name="phone" required value={form.phone} onChange={handleChange}
               placeholder="08xxxxxxxxxx"
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
           </div>
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">Program Sertifikasi</label>
             <select name="program" value={form.program} onChange={handleChange} required
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all">
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all">
               <option value="" disabled>Pilih Program</option>
               <option value="basic">Basic Certification — Gratis</option>
               <option value="intermediate">Intermediate — Rp 250.000</option>
               <option value="masterclass">Masterclass Bridal Glam — Rp 500.000</option>
-              <option value="editorial">Editorial & Fashion — Rp 750.000</option>
+              <option value="editorial">Editorial &amp; Fashion — Rp 750.000</option>
             </select>
           </div>
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">Level Pengalaman</label>
             <select name="experience" value={form.experience} onChange={handleChange} required
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all">
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all">
               <option value="" disabled>Pilih Level</option>
               <option value="beginner">Pemula — Baru belajar</option>
               <option value="intermediate">Menengah — Sudah ada portofolio</option>

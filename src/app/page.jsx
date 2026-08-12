@@ -1,14 +1,15 @@
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
-import RoadmapSection from "@/components/sections/RoadmapSection";
 import AboutSection from "@/components/sections/AboutSection";
+import KegiatanRiasKarsa from "@/components/sections/KegiatanRiasKarsa";
+import WorkshopTable from "@/components/sections/WorkshopTable";
 import DirectorySection from "@/components/sections/DirectorySection";
-import OpenCallSection from "@/components/sections/OpenCallSection";
-import ComparisonSection from "@/components/sections/ComparisonSection";
 import GallerySection from "@/components/sections/GallerySection";
+import ComparisonSection from "@/components/sections/ComparisonSection";
 import StatsSection from "@/components/sections/StatsSection";
 import TestimonialSection from "@/components/sections/TestimonialSection";
 import FaqSection from "@/components/sections/FaqSection";
+import CtaSection from "@/components/sections/CtaSection";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -17,15 +18,16 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
-        <RoadmapSection />
         <AboutSection />
+        <KegiatanRiasKarsa />
+        <WorkshopTable />
         <DirectorySection />
-        <OpenCallSection />
-        <ComparisonSection />
         <GallerySection />
         <StatsSection />
+        <ComparisonSection />
         <TestimonialSection />
         <FaqSection />
+        <CtaSection />
       </main>
       <Footer />
     </>
