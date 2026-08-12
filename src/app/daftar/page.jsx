@@ -36,33 +36,33 @@ export default function DaftarPage() {
             Daftar Akun Rias Karsa
           </h1>
           <p className="text-base text-text-muted">
-            Bergabung dengan komunitas MUA terbesar di Indonesia.
+            Bergabunglah dengan komunitas penata rias profesional Nusantara.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-md border border-border p-6 md:p-8 shadow-soft flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="bg-surface border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">Nama Lengkap</label>
             <input type="text" name="name" required value={form.name} onChange={handleChange}
               placeholder="Masukkan nama lengkap"
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
           </div>
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">Email</label>
             <input type="email" name="email" required value={form.email} onChange={handleChange}
               placeholder="contoh@email.com"
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
           </div>
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">No. WhatsApp</label>
             <input type="tel" name="phone" required value={form.phone} onChange={handleChange}
               placeholder="08xxxxxxxxxx"
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
           </div>
           <div>
             <label className="block text-xs font-medium text-text-muted mb-1.5">Saya mendaftar sebagai</label>
             <select name="role" value={form.role} onChange={handleChange}
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all">
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all">
               <option>MUA Pemula</option>
               <option>Model Freelance</option>
               <option>Calon Klien</option>
@@ -72,7 +72,7 @@ export default function DaftarPage() {
             <label className="block text-xs font-medium text-text-muted mb-1.5">Password</label>
             <input type="password" name="password" required value={form.password} onChange={handleChange}
               placeholder="Minimal 8 karakter"
-              className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+              className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
           </div>
           <Button type="submit" variant="primary" size="md" className="w-full mt-1">
             Daftar Sekarang

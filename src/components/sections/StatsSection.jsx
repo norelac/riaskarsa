@@ -5,9 +5,9 @@ import { Users, Award, Camera } from "lucide-react";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
 const stats = [
-  { icon: Users, value: 240, suffix: "+", label: "MUA Tersertifikasi" },
-  { icon: Award, value: 48, suffix: "", label: "Masterclass Selesai" },
-  { icon: Camera, value: 150, suffix: "+", label: "Model Terlibat" },
+  { icon: Users, value: 150, suffix: "+", label: "MUA Terverifikasi" },
+  { icon: Award, value: 40, suffix: "+", label: "Master Class" },
+  { icon: Camera, value: 1500, suffix: "+", label: "Klien" },
 ];
 
 function Counter({ target, suffix }) {
@@ -57,8 +57,8 @@ export default function StatsSection() {
   const statsRef = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section className="bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <section className="bg-background py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-main mb-4">
             Dampak Rias Karsa

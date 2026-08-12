@@ -13,12 +13,15 @@ export default function TestimonialSection() {
   const headerRef = useScrollReveal();
   const cardRef = useScrollReveal({ threshold: 0.2 });
 
-  const goTo = useCallback((idx) => {
-    if (idx === current || isAnimating) return;
-    setIsAnimating(true);
-    setCurrent(idx);
-    setTimeout(() => setIsAnimating(false), 400);
-  }, [current, isAnimating]);
+  const goTo = useCallback(
+    (idx) => {
+      if (idx === current || isAnimating) return;
+      setIsAnimating(true);
+      setCurrent(idx);
+      setTimeout(() => setIsAnimating(false), 400);
+    },
+    [current, isAnimating]
+  );
 
   const next = useCallback(() => {
     goTo((current + 1) % total);
@@ -36,8 +39,8 @@ export default function TestimonialSection() {
   const item = testimonials[current];
 
   return (
-    <section className="bg-surface">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <section className="bg-surface py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-main mb-4">
@@ -50,7 +53,7 @@ export default function TestimonialSection() {
 
         {/* Testimonial Card */}
         <div ref={cardRef} className="reveal max-w-3xl mx-auto">
-          <div className="bg-white rounded-md border border-border p-8 md:p-12 text-center relative shadow-soft min-h-[320px] flex flex-col items-center justify-center">
+          <div className="bg-white rounded-[20px] border border-border p-8 md:p-12 text-center relative shadow-soft min-h-[320px] flex flex-col items-center justify-center">
             {/* Quote Icon */}
             <div className="flex justify-center mb-6">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center animate-float-delay">

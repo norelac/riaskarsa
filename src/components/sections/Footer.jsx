@@ -1,23 +1,24 @@
 import { MapPin, Phone, Mail, Globe } from "lucide-react";
 
 const footerLinks = {
-  Program: [
-    { label: "Sertifikasi MUA", href: "#program" },
-    { label: "Masterclass", href: "#program" },
-    { label: "Komunitas", href: "#tentang" },
-    { label: "Open Call Model", href: "#model" },
-  ],
-  Katalog: [
-    { label: "Cari MUA", href: "#katalog" },
-    { label: "Filter Lokasi", href: "#katalog" },
-    { label: "Gaya Riasan", href: "#katalog" },
-    { label: "Pricelist", href: "#katalog" },
-  ],
-  Tentang: [
+  Navigasi: [
+    { label: "Beranda", href: "#hero" },
     { label: "Tentang Kami", href: "#tentang" },
-    { label: "Visi & Misi", href: "#tentang" },
-    { label: "Tim Kami", href: "#tentang" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Program & Event", href: "#program" },
+    { label: "Galeri", href: "#galeri" },
+    { label: "Kontak", href: "#kontak" },
+  ],
+  Legalitas: [
+    { label: "Syarat & Ketentuan", href: "#" },
+    { label: "Kebijakan Privasi", href: "#" },
+    { label: "Kode Etik", href: "#" },
+  ],
+  Kontak: [
+    { label: "WhatsApp: 0812-3456-7890", href: "https://wa.me/6281234567890", external: true },
+    { label: "Instagram: @rias.karsa.community", href: "https://instagram.com/rias.karsa.community", external: true },
+    { label: "TikTok: @rias.karsa.community", href: "https://tiktok.com/@rias.karsa.community", external: true },
+    { label: "Email: riaskarsa@gmail.com", href: "mailto:riaskarsa@gmail.com" },
+    { label: "Jl. Pemuda, Semarang, Jawa Tengah", href: "https://maps.google.com/?q=Jl.+Pemuda,+Semarang,+Jawa+Tengah", external: true },
   ],
 };
 
@@ -49,57 +50,38 @@ function YoutubeIcon() {
 }
 
 const socialLinks = [
-  { icon: InstagramIcon, href: "https://instagram.com/riaskarsa", label: "Instagram" },
-  { icon: TiktokIcon, href: "https://tiktok.com/@riaskarsa", label: "TikTok" },
-  { icon: YoutubeIcon, href: "https://youtube.com/@riaskarsa", label: "YouTube" },
+  { icon: InstagramIcon, href: "https://instagram.com/rias.karsa.community", label: "Instagram" },
+  { icon: TiktokIcon, href: "https://tiktok.com/@rias.karsa.community", label: "TikTok" },
+  { icon: YoutubeIcon, href: "https://youtube.com/@rias.karsa.community", label: "YouTube" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-supporting-dark text-white">
+    <footer className="relative bg-supporting-dark text-text-on-dark" style={{
+      boxShadow: `
+        0 -6px 14px rgba(50, 31, 31, 0.10),
+        0 -25px 25px rgba(50, 31, 31, 0.09),
+        0 -56px 34px rgba(50, 31, 31, 0.05),
+        0 -99px 40px rgba(50, 31, 31, 0.01),
+        0 -155px 43px rgba(50, 31, 31, 0.00)
+      `
+    }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-serif text-2xl font-bold">Rias Karsa</h3>
-            <p className="text-sm text-supporting-light leading-relaxed">
+          <div className="flex flex-col gap-4 lg:col-span-1">
+            <h3 className="font-serif text-2xl font-bold text-white">Rias Karsa</h3>
+            <p className="text-sm text-text-on-dark/80 leading-relaxed">
               Platform komunitas, sertifikasi, dan direktori Makeup Artist
               Indonesia. Menghubungkan MUA, model, dan klien dalam satu
               ekosistem.
             </p>
-            <div className="flex flex-col gap-2 mt-2">
-              <a
-                href="https://maps.google.com/?q=Jakarta,Indonesia"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-supporting-light hover:text-white transition-colors"
-              >
-                <MapPin size={16} />
-                Jakarta, Indonesia
-              </a>
-              <a
-                href="https://wa.me/6285819997505"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-supporting-light hover:text-white transition-colors"
-              >
-                <Phone size={16} />
-                +62 858-1999-7505
-              </a>
-              <a
-                href="mailto:info@riaskarsa.id"
-                className="flex items-center gap-2 text-sm text-supporting-light hover:text-white transition-colors"
-              >
-                <Mail size={16} />
-                info@riaskarsa.id
-              </a>
-            </div>
           </div>
 
           {/* Footer Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-sans text-sm font-semibold text-white mb-4">
+              <h4 className="font-sans text-base font-semibold text-white mb-4 tracking-wide">
                 {category}
               </h4>
               <ul className="flex flex-col gap-2.5">
@@ -107,7 +89,9 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-supporting-light hover:text-white transition-colors"
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      className="text-sm text-text-on-dark/80 hover:text-primary transition-colors"
                     >
                       {link.label}
                     </a>
@@ -119,9 +103,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-supporting-medium/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-supporting-light">
-            &copy; {new Date().getFullYear()} Rias Karsa. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-primary/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-text-on-dark/60">
+            &copy; {new Date().getFullYear()} Rias Karsa Semarang, All Rights Reserved
           </p>
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
@@ -131,7 +115,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="w-9 h-9 rounded-full bg-supporting-medium/30 flex items-center justify-center text-supporting-light hover:bg-primary hover:text-white transition-all"
+                className="w-9 h-9 rounded-full bg-primary/15 flex items-center justify-center text-primary hover:bg-primary hover:text-text-on-dark transition-all"
               >
                 <social.icon />
               </a>

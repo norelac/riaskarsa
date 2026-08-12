@@ -34,29 +34,29 @@ function ApplyModelContent() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-white rounded-md border border-border p-6 md:p-8 shadow-soft flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="bg-surface border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
         <div>
           <label className="block text-xs font-medium text-text-muted mb-1.5">Nama Lengkap</label>
           <input type="text" name="name" required value={form.name} onChange={handleChange}
             placeholder="Masukkan nama lengkap"
-            className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+            className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
         </div>
         <div>
           <label className="block text-xs font-medium text-text-muted mb-1.5">Email</label>
           <input type="email" name="email" required value={form.email} onChange={handleChange}
             placeholder="contoh@email.com"
-            className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+            className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
         </div>
         <div>
           <label className="block text-xs font-medium text-text-muted mb-1.5">No. WhatsApp</label>
           <input type="tel" name="phone" required value={form.phone} onChange={handleChange}
             placeholder="08xxxxxxxxxx"
-            className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+            className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
         </div>
         <div>
           <label className="block text-xs font-medium text-text-muted mb-1.5">Open Call yang Diminati</label>
           <select name="openCallId" value={form.openCallId} onChange={handleChange} required
-            className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all">
+            className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all">
             <option value="" disabled>Pilih Open Call</option>
             {openCalls.map((call) => (
               <option key={call.id} value={call.id}>{call.title} — {call.date}</option>
@@ -67,7 +67,7 @@ function ApplyModelContent() {
           <label className="block text-xs font-medium text-text-muted mb-1.5">Link Portfolio (Opsional)</label>
           <input type="url" name="portfolio" value={form.portfolio} onChange={handleChange}
             placeholder="https://instagram.com/..."
-            className="w-full px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-md text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
+            className="w-full px-3 py-2.5 text-sm font-sans bg-white border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all" />
         </div>
         <Button type="submit" variant="primary" size="md" className="w-full mt-1">
           Kirim Aplikasi

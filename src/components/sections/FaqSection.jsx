@@ -7,7 +7,7 @@ import useScrollReveal from "@/hooks/useScrollReveal";
 
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
-    <div className="border border-border rounded-md overflow-hidden bg-white card-hover cursor-default">
+    <div className="border border-border rounded-[20px] overflow-hidden bg-white card-hover cursor-default">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-surface"
@@ -48,8 +48,8 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <section id="faq" className="bg-background py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-main mb-4">

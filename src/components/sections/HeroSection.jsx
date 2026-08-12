@@ -1,75 +1,71 @@
 import Link from "next/link";
+import Image from "next/image";
 import Button from "@/components/common/Button";
+
+const stats = [
+  { value: "150+", label: "MUA Terverifikasi" },
+  { value: "40+", label: "Master Class" },
+  { value: "1500+", label: "Klien" },
+];
 
 export default function HeroSection() {
   return (
-    <section className="bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <section id="hero" className="relative min-h-[661px] flex items-center text-white overflow-hidden">
+      <div className="absolute inset-0 bg-supporting-dark">
+        <Image
+          src="/asset/krisna-putra-pratama-lKF-MdtuIss-unsplash 1.svg"
+          alt="Background hero Rias Karsa"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-supporting-dark via-supporting-dark/80 to-supporting-dark/50" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="flex flex-col gap-6 text-center lg:text-left">
-            <span className="hero-enter hero-enter-delay-1 inline-flex self-center lg:self-start items-center rounded-full bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary font-sans">
-              IT FEST 2026 — Komunitas MUA
+            <span className="hero-enter hero-enter-delay-1 inline-flex self-center lg:self-start items-center rounded-full bg-primary/15 px-4 py-1.5 text-xs font-medium text-primary font-sans">
+              IT FEST 2026 — Komunitas Penata Rias
             </span>
-            <h1 className="hero-enter hero-enter-delay-2 font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-text-main leading-tight">
-              Rias Wajahmu, <br />
-              <span className="text-primary">Tingkatkan</span> Potensimu
+
+            <h1 className="hero-enter hero-enter-delay-2 font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              Menyulam Cipta, <br />
+              <span className="text-primary">Memancarkan Anggunnya</span> <br />
+              Paras Nusantara
             </h1>
-            <p className="hero-enter hero-enter-delay-3 text-base md:text-lg text-text-muted leading-relaxed max-w-lg mx-auto lg:mx-0">
-              Platform komunitas, sertifikasi, dan direktori Makeup Artist
-              Indonesia. Bergabunglah dengan ratusan MUA pemula yang siap
-              berkembang bersama.
+
+            <p className="hero-enter hero-enter-delay-3 text-lg md:text-xl text-text-on-dark/90 leading-relaxed max-w-lg mx-auto lg:mx-0">
+              Bergabunglah dengan puluhan penata rias profesional Nusantara.
+              Dapatkan akses ke sertifikasi resmi, masterclass eksklusif, jaringan
+              klien yang lebih luas, dan dukungan penuh komunitas.
             </p>
+
             <div className="hero-enter hero-enter-delay-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-2">
-              <Link href="/daftar">
-                <Button variant="primary" size="lg">Daftar MUA</Button>
+              <Link href="/#katalog">
+                <Button variant="primary" size="lg">Cari MUA</Button>
               </Link>
-              <Button variant="secondary" size="lg" href="#katalog">Cari MUA</Button>
+              <Button variant="secondary" size="lg" href="/daftar">Gabung Komunitas</Button>
             </div>
           </div>
 
-          <div className="hero-enter hero-enter-delay-3 relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md lg:max-w-lg animate-float">
-              <div className="absolute inset-0 bg-surface rounded-2xl transform rotate-3 scale-105" />
-              <div className="relative bg-surface rounded-2xl border border-border p-6 shadow-soft">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white rounded-lg border border-border p-4 flex flex-col items-center gap-2 card-hover cursor-default">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="font-serif text-lg font-bold text-primary">1</span>
-                    </div>
-                    <span className="text-xs font-medium text-text-muted text-center">Daftar Akun</span>
-                  </div>
-                  <div className="bg-white rounded-lg border border-border p-4 flex flex-col items-center gap-2 card-hover cursor-default">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="font-serif text-lg font-bold text-primary">2</span>
-                    </div>
-                    <span className="text-xs font-medium text-text-muted text-center">Join Komunitas</span>
-                  </div>
-                  <div className="bg-white rounded-lg border border-border p-4 flex flex-col items-center gap-2 card-hover cursor-default">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="font-serif text-lg font-bold text-primary">3</span>
-                    </div>
-                    <span className="text-xs font-medium text-text-muted text-center">Sertifikasi</span>
-                  </div>
-                  <div className="bg-white rounded-lg border border-border p-4 flex flex-col items-center gap-2 card-hover cursor-default">
-                    <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center animate-pulse-glow">
-                      <span className="font-serif text-lg font-bold">4</span>
-                    </div>
-                    <span className="text-xs font-medium text-primary text-center font-semibold">Terdaftar di Direktori</span>
-                  </div>
+          <div className="hero-enter hero-enter-delay-3 flex justify-center lg:justify-end">
+            <div className="grid grid-cols-1 gap-4 w-full max-w-md">
+              {stats.map((s, index) => (
+                <div
+                  key={s.label}
+                  className="text-center lg:text-right bg-white/5 backdrop-blur-sm rounded-[20px] border border-primary/10 py-5 px-6"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <span className="font-serif text-4xl md:text-5xl font-bold text-primary">
+                    {s.value}
+                  </span>
+                  <p className="font-sans text-sm text-text-on-dark/80 mt-1">
+                    {s.label}
+                  </p>
                 </div>
-                <div className="mt-6 p-4 bg-white rounded-lg border border-border card-hover cursor-default">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center">
-                      <span className="font-serif text-sm font-bold text-primary">SA</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-text-main">Sarah Ayu</p>
-                      <p className="text-xs text-text-muted">Tersertifikasi · Jakarta</p>
-                    </div>
-                    <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">★ 4.9</span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

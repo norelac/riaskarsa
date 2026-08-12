@@ -51,16 +51,16 @@ function ThankYouContent() {
               Kembali ke Beranda
             </Button>
           </Link>
-          <a href="https://instagram.com/riaskarsa" target="_blank" rel="noopener noreferrer">
+          <a href="https://instagram.com/rias.karsa.community" target="_blank" rel="noopener noreferrer">
             <Button variant="secondary" size="md" className="w-full sm:w-auto">
-              Follow Instagram
+              Ikuti Komunitas
             </Button>
           </a>
         </div>
 
         {/* Footer note */}
         <p className="text-xs text-text-muted mt-10">
-          © {new Date().getFullYear()} Rias Karsa — IT FEST 2026
+          © {new Date().getFullYear()} Rias Karsa Semarang — IT FEST 2026
         </p>
       </div>
     </div>
