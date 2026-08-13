@@ -57,20 +57,12 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-supporting-dark text-text-on-dark" style={{
-      boxShadow: `
-        0 -6px 14px rgba(50, 31, 31, 0.10),
-        0 -25px 25px rgba(50, 31, 31, 0.09),
-        0 -56px 34px rgba(50, 31, 31, 0.05),
-        0 -99px 40px rgba(50, 31, 31, 0.01),
-        0 -155px 43px rgba(50, 31, 31, 0.00)
-      `
-    }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+    <footer className="relative bg-supporting-dark text-text-on-dark section-pad">
+      <div className="container-rias">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="flex flex-col gap-4 lg:col-span-1">
-            <h3 className="font-serif text-2xl font-bold text-primary">Rias Karsa</h3>
+            <h3 className="font-serif text-2xl font-normal text-primary">RIAS KARSA</h3>
             <p className="text-sm text-text-on-dark/80 leading-relaxed">
               Platform komunitas, sertifikasi, dan direktori Makeup Artist
               Indonesia. Menghubungkan MUA, model, dan klien dalam satu

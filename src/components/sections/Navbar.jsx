@@ -17,11 +17,11 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-supporting-dark/95 backdrop-blur-sm border-b border-primary/20">
-      <nav className="container-rias">
-        <div className="flex items-center justify-between h-16 md:h-[72px]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-supporting-dark/95 backdrop-blur-sm pt-[30px] pb-3 border-b border-border/10">
+      <nav className="container-rias max-w-[1240px]">
+        <div className="flex items-center justify-between h-[42px]">
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-serif text-2xl font-normal text-primary tracking-wide">Rias Karsa</span>
+            <span className="font-serif text-2xl font-normal text-primary tracking-wide">RIAS KARSA</span>
           </Link>
 
           <ul className="hidden md:flex items-center gap-8">

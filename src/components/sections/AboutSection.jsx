@@ -32,39 +32,43 @@ const highlights = [
 
 export default function AboutSection() {
   const headerRef = useScrollReveal();
-  const cardsRef = useScrollReveal({ threshold: 0.1 });
+  const itemsRef = useScrollReveal({ threshold: 0.1 });
 
   return (
     <section id="tentang" className="bg-background section-pad scroll-mt-24">
       <div className="container-rias">
         {/* Section Header */}
-        <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <h2 className="heading-section mb-4">
-            Mengenal Rias Karsa
-          </h2>
-          <p className="text-sm md:text-base text-text-on-dark/80 leading-relaxed">
+        <div
+          ref={headerRef}
+          className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16"
+        >
+          <h2 className="heading-section mb-4">Mengenal Rias Karsa</h2>
+          <p className="font-sans text-sm md:text-base text-text-on-dark/80 leading-relaxed">
             Rias Karsa adalah komunitas atau paguyuban penata rias profesional.
             Menghubungkan klien dengan MUA bersertifikat, sekaligus membuka ruang
             tumbuh bagi talenta tata rias Indonesia.
           </p>
         </div>
 
-        {/* Highlight Cards */}
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        {/* Highlight Items — 2x2 Horizontal Grid */}
+        <div
+          ref={itemsRef}
+          className="reveal grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12"
+        >
           {highlights.map((item, index) => (
             <div
               key={item.title}
-              className={`reveal reveal-delay-${index + 1} card-hover bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 flex flex-col items-center text-center gap-5`}
+              className={`reveal reveal-delay-${index + 1} flex items-start gap-5 md:gap-6`}
             >
-              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30">
                 <item.icon size={24} className="text-primary" />
               </div>
-              <h3 className="heading-card">
-                {item.title}
-              </h3>
-              <p className="text-sm text-supporting-light/90 leading-relaxed">
-                {item.description}
-              </p>
+              <div className="flex-1">
+                <h3 className="heading-card mb-2">{item.title}</h3>
+                <p className="font-sans text-sm md:text-base text-text-on-dark/80 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

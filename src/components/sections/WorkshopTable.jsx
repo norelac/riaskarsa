@@ -10,6 +10,7 @@ import useScrollReveal from "@/hooks/useScrollReveal";
 export default function WorkshopTable() {
   const headerRef = useScrollReveal();
   const tableRef = useScrollReveal({ threshold: 0.1 });
+  const cardsRef = useScrollReveal({ threshold: 0.1 });
 
   return (
     <section id="program" className="bg-surface-dark section-pad scroll-mt-24">
@@ -86,7 +87,7 @@ export default function WorkshopTable() {
         </div>
 
         {/* Workshop Cards (mobile) */}
-        <div ref={tableRef} className="reveal flex flex-col gap-5 md:hidden">
+        <div ref={cardsRef} className="reveal flex flex-col gap-5 md:hidden">
           {workshopSchedule.map((item) => (
             <div
               key={item.id}
