@@ -47,11 +47,11 @@ export default function DirectorySection() {
           ref={filterRef}
           className="reveal flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-10"
         >
-          <div className="relative">
+          <div className="relative w-full sm:w-auto">
             <select
               value={filters.city}
               onChange={(e) => setCity(e.target.value)}
-              className="appearance-none h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
             >
               <option value="all">Lokasi: Semua</option>
               <option value="Jakarta">Jakarta</option>
@@ -64,11 +64,11 @@ export default function DirectorySection() {
             </div>
           </div>
           
-          <div className="relative">
+          <div className="relative w-full sm:w-auto">
             <select
               value={filters.style}
               onChange={(e) => setStyle(e.target.value)}
-              className="appearance-none h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
             >
               <option value="all">Gaya: Semua</option>
               <option value="Soft Glam">Soft Glam</option>
@@ -82,11 +82,11 @@ export default function DirectorySection() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative w-full sm:w-auto">
             <select
               value={filters.priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="appearance-none h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
             >
               <option value="all">Harga: Semua</option>
               <option value="low">Budget (&lt; Rp 500rb)</option>

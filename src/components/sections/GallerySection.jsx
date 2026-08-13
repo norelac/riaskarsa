@@ -88,8 +88,8 @@ export default function GallerySection() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
               </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 pt-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="text-sm font-medium text-text-on-dark translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 pt-10 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-sm font-medium text-text-on-dark translate-y-0 sm:translate-y-2 sm:group-hover:translate-y-0 transition-transform duration-300">
                   {image.alt}
                 </p>
               </div>

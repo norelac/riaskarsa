@@ -10,6 +10,7 @@ import TestimonialSection from "@/components/sections/TestimonialSection";
 import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
 import Footer from "@/components/sections/Footer";
+import BackToTop from "@/components/common/BackToTop";
 export default function Home() {
   return (
     <>
@@ -27,6 +28,7 @@ export default function Home() {
         <CtaSection />
       </main>
       <Footer />
+      <BackToTop />
     </>
   );
 }

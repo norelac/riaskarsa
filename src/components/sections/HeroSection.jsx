@@ -1,37 +1,100 @@
+"use client";
+
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/common/Button";
+import CountUp from "@/components/common/CountUp";
+import useParallax from "@/hooks/useParallax";
+
+const slides = [
+  {
+    src: "/asset/krisna-putra-pratama-lKF-MdtuIss-unsplash 1.svg",
+    alt: "Bridal makeup session Rias Karsa",
+  },
+  {
+    src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.svg",
+    alt: "Elegant evening makeup look",
+  },
+  {
+    src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.svg",
+    alt: "Masterclass practice session",
+  },
+  {
+    src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.svg",
+    alt: "Traditional bridal styling",
+  },
+  {
+    src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.svg",
+    alt: "Fashion show makeup backstage",
+  },
+];
 
 const stats = [
-  { value: "150+", label: "MUA Terverifikasi" },
-  { value: "40+", label: "Master Class" },
-  { value: "1500+", label: "Klien" },
+  { value: 150, suffix: "+", label: "MUA Terverifikasi" },
+  { value: 40, suffix: "+", label: "Master Class" },
+  { value: 1500, suffix: "+", label: "Klien" },
 ];
 
 export default function HeroSection() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = slides.length;
+  const timerRef = useRef(null);
+  const bgRef = useParallax(0.12);
+
+  const goTo = useCallback((idx) => {
+    setCurrent(((idx % total) + total) % total);
+  }, [total]);
+
+  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+
+  useEffect(() => {
+    if (paused) return;
+    timerRef.current = setInterval(next, 6000);
+    return () => clearInterval(timerRef.current);
+  }, [next, paused]);
+
   return (
     <section
       id="hero"
-      className="relative min-h-[661px] flex items-center text-text-on-dark overflow-hidden scroll-mt-24"
+      className="relative min-h-[600px] md:min-h-[661px] flex items-center text-text-on-dark overflow-hidden scroll-mt-24"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      <div className="absolute inset-0 bg-supporting-dark">
-        <Image
-          src="/asset/krisna-putra-pratama-lKF-MdtuIss-unsplash 1.svg"
-          alt="Background hero Rias Karsa"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-supporting-dark via-supporting-dark/80 to-supporting-dark/50" />
+      {/* Background Carousel */}
+      <div ref={bgRef} className="absolute inset-y-[-120px] inset-x-[-40px] bg-supporting-dark will-change-transform">
+        {slides.map((slide, index) => (
+          <div
+            key={slide.src}
+            className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
+              index === current ? "opacity-100" : "opacity-0"
+            }`}
+            aria-hidden={index !== current}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority={index === 0}
+              className={`object-cover hero-kenburns ${index === current ? "hero-kenburns-active" : ""}`}
+              sizes="100vw"
+            />
+          </div>
+        ))}
       </div>
 
-      <div className="relative z-10 container-rias py-16 md:py-24">
+      {/* Fixed Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-supporting-dark via-supporting-dark/60 to-supporting-dark/40" />
+
+      <div className="relative z-10 container-rias pt-16 pb-16 md:pt-24 md:pb-20">
         <div className="flex flex-col items-center text-center gap-8 md:gap-10">
           <div className="flex flex-col gap-6 max-w-3xl">
-            <h1 className="font-serif text-[32px] md:text-[40px] lg:text-[48px] font-normal text-primary leading-tight">
-              Menyulam Cipta, <br />
-              Memancarkan Anggunnya <br />
+            <h1 className="font-serif text-[26px] sm:text-[28px] md:text-[40px] lg:text-[48px] font-normal text-primary leading-tight">
+              Menyulam Cipta,{" "}
+              <br className="hidden md:block" />
+              Memancarkan Anggunnya{" "}
+              <br className="hidden md:block" />
               Paras Nusantara
             </h1>
 
@@ -50,16 +113,34 @@ export default function HeroSection() {
           <div className="w-full max-w-2xl border-t border-primary/30" />
 
           {/* Stats Row */}
-          <div className="grid grid-cols-3 gap-4 md:gap-6 w-full max-w-2xl rounded-[20px] border border-primary/10 bg-white/5 backdrop-blur-sm p-6 md:p-8">
+          <div className="grid grid-cols-3 gap-4 md:gap-6 w-full max-w-2xl rounded-[20px] border border-primary/10 bg-white/5 backdrop-blur-sm p-4 sm:p-6 md:p-8">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center text-center gap-1.5">
-                <span className="font-serif text-2xl sm:text-3xl md:text-[36px] font-normal text-primary">
-                  {s.value}
-                </span>
+                <CountUp
+                  target={s.value}
+                  suffix={s.suffix}
+                  className="font-serif text-xl sm:text-2xl md:text-[36px] font-normal text-primary"
+                />
                 <p className="font-sans text-xs sm:text-sm md:text-base font-normal text-text-on-dark/90">
                   {s.label}
                 </p>
               </div>
+            ))}
+          </div>
+
+          {/* Dots */}
+          <div className="flex items-center gap-2.5">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goTo(idx)}
+                aria-label={`Ke foto ${idx + 1}`}
+                className={`rounded-full transition-all duration-300 ${
+                  idx === current
+                    ? "w-8 h-2.5 bg-primary"
+                    : "w-2.5 h-2.5 bg-primary/40 hover:bg-primary/70"
+                }`}
+              />
             ))}
           </div>
         </div>

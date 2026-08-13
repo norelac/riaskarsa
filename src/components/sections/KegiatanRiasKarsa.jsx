@@ -80,7 +80,7 @@ export default function KegiatanRiasKarsa() {
                 <h3 className="heading-card leading-tight">
                   {act.title}
                 </h3>
-                <p className="text-xs font-light text-supporting-light leading-relaxed">
+                <p className="text-sm md:text-xs font-light text-supporting-light leading-relaxed">
                   {act.description}
                 </p>
                 <Link href={act.ctaHref} className="mt-auto inline-flex">

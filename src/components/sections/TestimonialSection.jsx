@@ -53,7 +53,7 @@ export default function TestimonialSection() {
 
         {/* Testimonial Card */}
         <div ref={cardRef} className="reveal max-w-3xl mx-auto">
-          <div className="bg-surface border border-border rounded-[20px] p-8 md:p-12 text-center relative shadow-soft min-h-[320px] flex flex-col items-center justify-center">
+          <div className="bg-surface border border-border rounded-[20px] p-6 md:p-12 text-center relative shadow-soft min-h-[320px] flex flex-col items-center justify-center">
             {/* Quote Icon */}
             <div className="flex justify-center mb-6">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30 animate-float-delay">

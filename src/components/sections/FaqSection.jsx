@@ -10,6 +10,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
     <div className="border border-border rounded-[20px] overflow-hidden bg-surface card-hover cursor-default">
       <button
         onClick={onToggle}
+        aria-expanded={isOpen}
         className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-surface-dark/5"
       >
         <span className="font-sans text-sm md:text-base font-medium text-text-main pr-4">

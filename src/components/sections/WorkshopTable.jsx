@@ -101,9 +101,9 @@ export default function WorkshopTable() {
             return (
               <div
                 key={item.id}
-                className="bg-background border border-border rounded-[20px] p-6 flex flex-col gap-4"
+                className="bg-background border border-border rounded-[20px] p-5 md:p-6 flex flex-col gap-4"
               >
-                <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start justify-between gap-3 flex-wrap gap-y-2">
                   <div className="flex items-center gap-2 text-primary text-sm font-medium">
                     <CalendarDays size={16} />
                     <span>{item.date}</span>

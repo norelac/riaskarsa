@@ -12,6 +12,13 @@ export const muas = [
     isCertified: true,
     experience: "3 Years",
     specialties: ["Wedding", "Graduation", "Pre-wedding"],
+    bio: "Spesialis soft glam dengan hasil yang natural, flawless, dan tahan lama. Ayu berpengalaman menangani lebih dari 100 klien wedding dan pre-wedding di area Jabodetabek dengan pendekatan personal untuk setiap bentuk wajah.",
+    portfolio: [
+      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.svg", alt: "Soft glam bridal look" },
+      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.svg", alt: "Natural daily look" },
+      { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.svg", alt: "Dewy makeup look" },
+      { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.svg", alt: "Traditional touch" },
+    ],
   },
   {
     id: 2,
@@ -26,6 +33,13 @@ export const muas = [
     isCertified: true,
     experience: "8 Years",
     specialties: ["Traditional Bridal", "Cultural Events", "Royal Wedding"],
+    bio: "Dedicated pada pelestarian rias adat Nusantara — Paes Ageng, Paes Jogja, dan rias Sunda. Tim Beauty of Nusa telah dipercaya menangani acara keraton dan resepsi adat di Jawa Tengah dan Yogyakarta.",
+    portfolio: [
+      { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.svg", alt: "Paes Jogja bridal" },
+      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.svg", alt: "Sunda traditional look" },
+      { src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.svg", alt: "Cultural event styling" },
+      { src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.svg", alt: "Royal wedding session" },
+    ],
   },
   {
     id: 3,
@@ -40,6 +54,13 @@ export const muas = [
     isCertified: true,
     experience: "5 Years",
     specialties: ["Bridal Glam", "International Wedding", "Engagement"],
+    bio: "MUA modern bride dengan sentuhan glam kontemporer. Bina dipercaya menangani wedding nasional dan internasional, dengan prioritas pada ketahanan makeup seharian dan hasil yang photogenic.",
+    portfolio: [
+      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.svg", alt: "Modern bride glam" },
+      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.svg", alt: "Bridal makeup session" },
+      { src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.svg", alt: "Fashion show backstage" },
+      { src: "/asset/rizky-motion-J7PfUVrNJos-unsplash 1.svg", alt: "Editorial glam look" },
+    ],
   },
   {
     id: 4,
@@ -54,6 +75,13 @@ export const muas = [
     isCertified: true,
     experience: "2 Years",
     specialties: ["Hijab Modern", "Syar'i", "Daily Rias"],
+    bio: "MUA muda berenergi yang fokus pada riasan hijab modern dan syar'i. Cantika melayani riasan harian, wisuda, dan acara keluarga dengan harga ramah tanpa mengorbankan kualitas.",
+    portfolio: [
+      { src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.svg", alt: "Hijab modern look" },
+      { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.svg", alt: "Daily natural makeup" },
+      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.svg", alt: "Syar'i bridal look" },
+      { src: "/asset/rizky-motion-D_5Kf6Du6JY-unsplash 1.svg", alt: "Fresh everyday glow" },
+    ],
   },
   {
     id: 5,
@@ -68,6 +96,13 @@ export const muas = [
     isCertified: true,
     experience: "4 Years",
     specialties: ["Party Glam", "Pesta & Acara", "Bridal"],
+    bio: "MUA bertangan berani untuk hasil bold dramatic yang mencuri perhatian. Rara sering menangani party, panggung, dan editorial dengan teknik contouring dan eyeshadow statement.",
+    portfolio: [
+      { src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.svg", alt: "Bold party look" },
+      { src: "/asset/rizky-motion-J7PfUVrNJos-unsplash 1.svg", alt: "Editorial dramatic look" },
+      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.svg", alt: "Glam evening look" },
+      { src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.svg", alt: "Stage makeup" },
+    ],
   },
   {
     id: 6,
@@ -82,5 +117,12 @@ export const muas = [
     isCertified: true,
     experience: "1 Year",
     specialties: ["Korean Dewy", "Daily Rias", "Pre-wedding"],
+    bio: "Pecinta Korean beauty style dengan hasil dewy, natural, dan youthful. Sekar melayani riasan harian serta pre-wedding dengan teknik glass skin yang sedang tren.",
+    portfolio: [
+      { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.svg", alt: "Korean dewy look" },
+      { src: "/asset/rizky-motion-D_5Kf6Du6JY-unsplash 1.svg", alt: "Glass skin makeup" },
+      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.svg", alt: "Natural daily look" },
+      { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.svg", alt: "Soft pre-wedding look" },
+    ],
   },
 ];

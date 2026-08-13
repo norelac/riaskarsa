@@ -53,7 +53,7 @@ export default function ComparisonSection() {
         <div ref={tableRef} className="reveal max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-0">
             {/* Tanpa Komunitas */}
-            <div className="h-full bg-surface-dark border border-border rounded-[20px] rounded-b-none md:rounded-l-[20px] md:rounded-r-none md:rounded-bl-[20px] p-6 md:p-8 flex flex-col">
+            <div className="h-full bg-surface-dark border border-border rounded-[20px] md:rounded-l-[20px] md:rounded-r-none md:rounded-b-none p-6 md:p-8 flex flex-col">
               <div className="text-center pb-5 mb-5 border-b border-border">
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 mb-3">
                   <X size={18} className="text-text-on-dark/40" />
@@ -83,8 +83,8 @@ export default function ComparisonSection() {
             </div>
 
             {/* Rias Karsa */}
-            <div className="relative h-full bg-primary border-2 border-primary rounded-[20px] rounded-t-none md:rounded-l-none md:rounded-r-[20px] p-6 md:p-8 flex flex-col shadow-elevated">
-              <div className="absolute -inset-1 bg-primary/20 rounded-[20px] rounded-t-none md:rounded-r-[20px] md:rounded-tl-none blur-xl opacity-40 -z-10" />
+            <div className="relative h-full bg-primary border-2 border-primary rounded-[20px] md:rounded-r-[20px] md:rounded-l-none md:rounded-t-none p-6 md:p-8 flex flex-col shadow-elevated">
+              <div className="absolute -inset-1 bg-primary/20 rounded-[20px] md:rounded-r-[20px] md:rounded-tl-none blur-xl opacity-40 -z-10" />
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full bg-primary-ink text-primary px-4 py-1.5 text-[10px] font-semibold tracking-wider whitespace-nowrap">
                 <Sparkles size={12} />
                 PALING POPULER

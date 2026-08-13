@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Button from "@/components/common/Button";
@@ -13,11 +13,61 @@ const navLinks = [
   { label: "Kontak", href: "#kontak" },
 ];
 
+const sectionIds = ["hero", "tentang", "program", "galeri", "kontak"];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("#hero");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 80);
+      const progressEl = document.getElementById("scroll-progress");
+      if (progressEl) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = max > 0 ? (window.scrollY / max) * 100 : 0;
+        progressEl.style.width = `${percent}%`;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-supporting-dark/95 backdrop-blur-sm pt-[30px] pb-3 border-b border-border/10">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 bg-supporting-dark/95 backdrop-blur-sm pt-[30px] border-b border-border/10 transition-all duration-300 ${
+        scrolled ? "pb-2 shadow-elevated" : "pb-3"
+      }`}
+    >
+      {/* Scroll Progress Bar */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-transparent overflow-hidden">
+        <div id="scroll-progress" className="h-full bg-primary w-0 transition-[width] duration-150 ease-out" />
+      </div>
+
       <nav className="container-rias max-w-[1240px]">
         <div className="flex items-center justify-between h-[42px]">
           <Link href="/" className="flex items-center gap-2">
@@ -25,16 +75,23 @@ export default function Navbar() {
           </Link>
 
           <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="p-2 text-sm tracking-[0.32px] transition-colors duration-200 relative after:absolute after:bottom-0 after:left-2 after:right-2 after:h-[2px] after:bg-primary after:transition-all after:duration-300 after:origin-left after:scale-x-0 hover:after:scale-x-100 text-primary/80 hover:text-primary"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = active === link.href;
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className={`p-2 text-sm tracking-[0.32px] transition-colors duration-200 relative after:absolute after:bottom-0 after:left-2 after:right-2 after:h-[2px] after:bg-primary after:transition-all after:duration-300 after:origin-left after:scale-x-0 hover:after:scale-x-100 ${
+                      isActive
+                        ? "text-primary after:scale-x-100"
+                        : "text-primary/80 hover:text-primary"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="hidden md:block">

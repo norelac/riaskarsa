@@ -1,59 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Users, Award, Camera } from "lucide-react";
 import useScrollReveal from "@/hooks/useScrollReveal";
+import CountUp from "@/components/common/CountUp";
 
 const stats = [
   { icon: Users, value: 150, suffix: "+", label: "MUA Terverifikasi" },
   { icon: Award, value: 40, suffix: "+", label: "Master Class" },
   { icon: Camera, value: 1500, suffix: "+", label: "Klien" },
 ];
-
-function Counter({ target, suffix }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          let start = 0;
-          const duration = 2000;
-          const step = (timestamp) => {
-            if (!start) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(eased * target));
-            if (progress < 1) {
-              requestAnimationFrame(step);
-            }
-          };
-          requestAnimationFrame(step);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [target]);
-
-  return (
-    <span
-      ref={ref}
-      className="font-serif text-3xl sm:text-4xl md:text-[36px] font-normal text-primary leading-none"
-    >
-      {count}
-      {suffix}
-    </span>
-  );
-}
 
 export default function StatsSection() {
   const headerRef = useScrollReveal();
@@ -83,7 +38,11 @@ export default function StatsSection() {
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30">
                 <stat.icon size={24} className="text-primary" />
               </div>
-              <Counter target={stat.value} suffix={stat.suffix} />
+              <CountUp
+                target={stat.value}
+                suffix={stat.suffix}
+                className="font-serif text-3xl sm:text-4xl md:text-[36px] font-normal text-primary leading-none"
+              />
               <span className="text-sm md:text-lg font-normal text-primary">
                 {stat.label}
               </span>
