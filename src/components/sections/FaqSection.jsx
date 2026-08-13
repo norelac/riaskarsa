@@ -7,10 +7,10 @@ import useScrollReveal from "@/hooks/useScrollReveal";
 
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
-    <div className="border border-border rounded-[20px] overflow-hidden bg-white card-hover cursor-default">
+    <div className="border border-border rounded-[20px] overflow-hidden bg-surface card-hover cursor-default">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-surface"
+        className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-surface-dark/5"
       >
         <span className="font-sans text-sm md:text-base font-medium text-text-main pr-4">
           {item.question}
@@ -48,14 +48,14 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="bg-background py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="bg-background section-pad scroll-mt-24">
+      <div className="container-rias">
         {/* Section Header */}
         <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-main mb-4">
+          <h2 className="heading-section mb-4">
             Pertanyaan Umum
           </h2>
-          <p className="text-base md:text-lg text-text-muted leading-relaxed">
+          <p className="text-sm md:text-base text-text-on-dark/80 leading-relaxed">
             Temukan jawaban atas pertanyaan yang sering ditanyakan seputar
             Rias Karsa.
           </p>

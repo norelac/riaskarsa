@@ -18,16 +18,23 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-supporting-dark/95 backdrop-blur-sm border-b border-primary/20">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-18">
+      <nav className="container-rias">
+        <div className="flex items-center justify-between h-16 md:h-[72px]">
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-serif text-xl md:text-2xl font-bold text-primary">Rias Karsa</span>
+            <span className="font-serif text-2xl font-normal text-primary tracking-wide">Rias Karsa</span>
           </Link>
 
           <ul className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-xs font-medium text-primary hover:text-text-on-dark transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
+                <a
+                  href={link.href}
+                  className={`p-2 text-sm tracking-[0.32px] transition-colors duration-200 relative after:absolute after:bottom-0 after:left-2 after:right-2 after:h-[2px] after:bg-primary after:transition-all after:duration-300 after:origin-left after:scale-x-0 hover:after:scale-x-100 ${
+                    link.href === "#hero"
+                      ? "text-primary font-bold after:scale-x-100"
+                      : "text-primary/80 hover:text-primary"
+                  }`}
+                >
                   {link.label}
                 </a>
               </li>
@@ -48,7 +55,7 @@ export default function Navbar() {
             <ul className="flex flex-col gap-4">
               {navLinks.map((link, index) => (
                 <li key={link.href} className="menu-slide-down" style={{ animationDelay: `${index * 0.05}s` }}>
-                  <a href={link.href} onClick={() => setIsOpen(false)} className="block text-sm font-medium text-primary hover:text-text-on-dark transition-colors px-2 py-1">
+                  <a href={link.href} onClick={() => setIsOpen(false)} className="block text-sm font-medium text-primary/80 hover:text-primary transition-colors px-2 py-1">
                     {link.label}
                   </a>
                 </li>

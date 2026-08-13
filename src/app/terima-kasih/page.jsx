@@ -37,10 +37,10 @@ function ThankYouContent() {
         </div>
 
         {/* Content */}
-        <h1 className="font-serif text-3xl md:text-4xl font-bold text-text-main mb-4">
+        <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
           {msg.title}
         </h1>
-        <p className="text-base text-text-muted leading-relaxed mb-8">
+        <p className="text-base text-text-on-dark/70 leading-relaxed mb-8">
           {msg.desc}
         </p>
 
@@ -59,7 +59,7 @@ function ThankYouContent() {
         </div>
 
         {/* Footer note */}
-        <p className="text-xs text-text-muted mt-10">
+        <p className="text-xs text-text-on-dark/50 mt-10">
           © {new Date().getFullYear()} Rias Karsa Semarang — IT FEST 2026
         </p>
       </div>
@@ -71,7 +71,7 @@ export default function ThankYouPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <p className="text-text-muted">Memuat...</p>
+        <p className="text-text-on-dark/60">Memuat...</p>
       </div>
     }>
       <ThankYouContent />

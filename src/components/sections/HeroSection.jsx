@@ -10,7 +10,7 @@ const stats = [
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-[661px] flex items-center text-white overflow-hidden">
+    <section id="hero" className="relative min-h-[661px] flex items-center text-white overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 bg-supporting-dark">
         <Image
           src="/asset/krisna-putra-pratama-lKF-MdtuIss-unsplash 1.svg"
@@ -23,20 +23,20 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-supporting-dark via-supporting-dark/80 to-supporting-dark/50" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div className="relative z-10 container-rias py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="flex flex-col gap-6 text-center lg:text-left">
             <span className="hero-enter hero-enter-delay-1 inline-flex self-center lg:self-start items-center rounded-full bg-primary/15 px-4 py-1.5 text-xs font-medium text-primary font-sans">
-              IT FEST 2026 — Komunitas Penata Rias
+              Komunitas · Sertifikasi · Direktori MUA
             </span>
 
-            <h1 className="hero-enter hero-enter-delay-2 font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="hero-enter hero-enter-delay-2 font-serif text-[40px] md:text-[48px] font-normal text-primary leading-tight">
               Menyulam Cipta, <br />
-              <span className="text-primary">Memancarkan Anggunnya</span> <br />
+              Memancarkan Anggunnya <br />
               Paras Nusantara
             </h1>
 
-            <p className="hero-enter hero-enter-delay-3 text-lg md:text-xl text-text-on-dark/90 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p className="hero-enter hero-enter-delay-3 text-lg text-text-on-dark/90 leading-relaxed max-w-lg mx-auto lg:mx-0">
               Bergabunglah dengan puluhan penata rias profesional Nusantara.
               Dapatkan akses ke sertifikasi resmi, masterclass eksklusif, jaringan
               klien yang lebih luas, dan dukungan penuh komunitas.
@@ -44,24 +44,21 @@ export default function HeroSection() {
 
             <div className="hero-enter hero-enter-delay-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-2">
               <Link href="/#katalog">
-                <Button variant="primary" size="lg">Cari MUA</Button>
+                <Button variant="primary" size="lg" className="w-full sm:w-auto">Cari MUA</Button>
               </Link>
-              <Button variant="secondary" size="lg" href="/daftar">Gabung Komunitas</Button>
+              <Button variant="secondary" size="lg" href="/daftar" className="w-full sm:w-auto">Gabung Komunitas</Button>
             </div>
           </div>
 
-          <div className="hero-enter hero-enter-delay-3 flex justify-center lg:justify-end">
-            <div className="grid grid-cols-1 gap-4 w-full max-w-md">
-              {stats.map((s, index) => (
-                <div
-                  key={s.label}
-                  className="text-center lg:text-right bg-white/5 backdrop-blur-sm rounded-[20px] border border-primary/10 py-5 px-6"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <span className="font-serif text-4xl md:text-5xl font-bold text-primary">
+          {/* Stats Row */}
+          <div className="hero-enter hero-enter-delay-3">
+            <div className="grid grid-cols-3 gap-4 md:gap-6 rounded-[20px] border border-primary/10 bg-white/5 backdrop-blur-sm p-6 md:p-8">
+              {stats.map((s) => (
+                <div key={s.label} className="flex flex-col items-center text-center gap-1.5">
+                  <span className="font-serif text-2xl sm:text-3xl md:text-[36px] font-normal text-primary">
                     {s.value}
                   </span>
-                  <p className="font-sans text-sm text-text-on-dark/80 mt-1">
+                  <p className="font-sans text-xs md:text-base font-normal text-primary">
                     {s.label}
                   </p>
                 </div>

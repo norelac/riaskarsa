@@ -15,36 +15,50 @@ export default function DirectorySection() {
   const filterRef = useScrollReveal();
   const gridRef = useScrollReveal({ threshold: 0.05 });
 
-  const { filters, setSearch, setCity, setStyle, setPriceRange, filteredList, resetFilters } = useFilter(muas);
+  const {
+    filters,
+    setSearch,
+    setCity,
+    setStyle,
+    setPriceRange,
+    filteredList,
+    resetFilters,
+  } = useFilter(muas);
 
   return (
-    <section id="katalog" className="bg-surface py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="katalog" className="bg-background section-pad scroll-mt-24">
+      <div className="container-rias">
         <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-main mb-4">
+          <h2 className="heading-section mb-4">
             Direktori MUA Terverifikasi
           </h2>
-          <p className="text-base md:text-lg text-text-muted leading-relaxed">
+          <p className="text-sm md:text-base text-text-on-dark/80 leading-relaxed">
             Cari MUA terbaik berdasarkan lokasi, gaya riasan, dan anggaranmu.
           </p>
         </div>
 
-        <div ref={filterRef} className="reveal bg-white rounded-[20px] border border-border p-4 md:p-6 mb-8 shadow-soft">
+        <div
+          ref={filterRef}
+          className="reveal bg-surface-dark border border-border rounded-[20px] p-4 md:p-6 mb-8 shadow-soft"
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="relative lg:col-span-2">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
+              <Search
+                size={16}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-primary"
+              />
               <input
                 type="text"
                 value={filters.search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Cari nama atau spesialisasi..."
-                className="w-full pl-9 pr-4 py-2.5 text-sm font-sans bg-surface border border-border rounded-[20px] text-text-main placeholder:text-text-muted/60 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all"
+                className="w-full pl-9 pr-4 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all"
               />
             </div>
             <select
               value={filters.city}
               onChange={(e) => setCity(e.target.value)}
-              className="px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-[20px] text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all"
+              className="px-3 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all"
             >
               <option value="all">Semua Kota</option>
               <option value="Jakarta">Jakarta</option>
@@ -55,7 +69,7 @@ export default function DirectorySection() {
             <select
               value={filters.style}
               onChange={(e) => setStyle(e.target.value)}
-              className="px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-[20px] text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all"
+              className="px-3 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all"
             >
               <option value="all">Semua Gaya</option>
               <option value="Soft Glam">Soft Glam</option>
@@ -67,7 +81,7 @@ export default function DirectorySection() {
             <select
               value={filters.priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="px-3 py-2.5 text-sm font-sans bg-surface border border-border rounded-[20px] text-text-main focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all"
+              className="px-3 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all"
             >
               <option value="all">Semua Harga</option>
               <option value="low">Budget ({'<'} Rp 500rb)</option>
@@ -76,9 +90,12 @@ export default function DirectorySection() {
             </select>
           </div>
 
-          {(filters.search || filters.city !== "all" || filters.style !== "all" || filters.priceRange !== "all") && (
+          {(filters.search ||
+            filters.city !== "all" ||
+            filters.style !== "all" ||
+            filters.priceRange !== "all") && (
             <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
-              <p className="text-xs text-text-muted">
+              <p className="text-xs text-text-on-dark/60">
                 Menampilkan {filteredList.length} dari {muas.length} MUA
               </p>
               <button
@@ -97,9 +114,9 @@ export default function DirectorySection() {
               <Link
                 key={mua.id}
                 href={`/mua/${mua.id}`}
-                className="card-hover bg-white rounded-[20px] border border-border overflow-hidden flex flex-col"
+                className="group card-hover bg-surface-dark border border-border rounded-[20px] overflow-hidden flex flex-col"
               >
-                <div className="aspect-[4/3] bg-surface flex items-center justify-center p-6 border-b border-border relative">
+                <div className="aspect-[4/3] bg-background flex items-center justify-center p-6 border-b border-border relative">
                   <Image
                     src={mua.image}
                     alt={mua.name}
@@ -111,33 +128,49 @@ export default function DirectorySection() {
                 <div className="p-5 flex flex-col gap-3 flex-1">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h4 className="font-serif text-2xl font-semibold text-text-main">{mua.name}</h4>
-                      <p className="text-xs text-text-muted mt-0.5">{mua.city} · {mua.experience}</p>
+                      <h4 className="heading-card group-hover:text-primary-hover transition-colors">
+                        {mua.name}
+                      </h4>
+                      <p className="text-xs text-text-on-dark/60 mt-0.5">
+                        {mua.city} · {mua.experience}
+                      </p>
                     </div>
-                    {mua.isCertified && <Badge color="primary">Tersertifikasi</Badge>}
+                    {mua.isCertified && (
+                      <Badge color="primary">Tersertifikasi</Badge>
+                    )}
                   </div>
-                  <span className="text-sm font-medium text-text-main">{mua.style}</span>
+                  <span className="text-xs font-light text-supporting-light">{mua.style}</span>
                   <div className="flex flex-wrap gap-1.5 mt-1">
                     {mua.specialties.map((spec) => (
                       <span
                         key={spec}
-                        className="text-[11px] font-medium px-2 py-0.5 bg-surface rounded-full text-text-muted border border-border"
+                        className="text-[11px] font-light px-2 py-0.5 bg-background rounded-full text-supporting-light border border-primary/30"
                       >
                         {spec}
                       </span>
                     ))}
                   </div>
-                  <div className="mt-auto pt-3 border-t border-border flex items-center justify-between">
-                    <span className="text-sm font-semibold text-primary">{formatRupiah(mua.price)}</span>
-                    <span className="text-xs text-text-muted">★ {mua.rating} ({mua.reviews})</span>
+                  <div className="mt-auto pt-3 border-t border-primary/20 flex items-center justify-between">
+                    <span className="text-base text-supporting-light font-normal">
+                      {formatRupiah(mua.price)}
+                    </span>
+                    <span className="text-xs text-text-on-dark/60">
+                      ★ {mua.rating} ({mua.reviews})
+                    </span>
+                  </div>
+                  {/* CTA text (not a link - parent card is the link) */}
+                  <div className="mt-3 text-center">
+                    <span className="inline-flex items-center justify-center gap-1 text-xs font-medium text-primary hover:text-primary-hover transition-colors cursor-pointer">
+                      LIHAT SELENGKAPNYA
+                    </span>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-[20px] border border-border p-12 text-center">
-            <p className="font-sans text-base text-text-muted">
+          <div className="bg-surface-dark border border-border rounded-[20px] p-12 text-center">
+            <p className="font-sans text-base text-text-on-dark/60">
               Tidak ditemukan MUA yang sesuai filter.
             </p>
             <button
@@ -152,7 +185,9 @@ export default function DirectorySection() {
         {/* CTA */}
         <div className="mt-12 text-center">
           <Link href="/#katalog">
-            <Button variant="secondary" size="md">LIHAT SEMUA PENATA RIAS</Button>
+            <Button variant="secondary" size="md">
+              LIHAT SEMUA PENATA RIAS
+            </Button>
           </Link>
         </div>
       </div>
