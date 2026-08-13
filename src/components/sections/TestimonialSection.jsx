@@ -39,24 +39,24 @@ export default function TestimonialSection() {
   const item = testimonials[current];
 
   return (
-    <section className="bg-surface py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-background section-pad">
+      <div className="container-rias">
         {/* Section Header */}
         <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-text-main mb-4">
+          <h2 className="heading-section mb-4">
             Apa Kata Mereka?
           </h2>
-          <p className="text-base md:text-lg text-text-muted leading-relaxed">
+          <p className="text-sm md:text-base text-text-on-dark/80 leading-relaxed">
             Cerita nyata dari anggota komunitas Rias Karsa.
           </p>
         </div>
 
         {/* Testimonial Card */}
         <div ref={cardRef} className="reveal max-w-3xl mx-auto">
-          <div className="bg-white rounded-[20px] border border-border p-8 md:p-12 text-center relative shadow-soft min-h-[320px] flex flex-col items-center justify-center">
+          <div className="bg-surface border border-border rounded-[20px] p-8 md:p-12 text-center relative shadow-soft min-h-[320px] flex flex-col items-center justify-center">
             {/* Quote Icon */}
             <div className="flex justify-center mb-6">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center animate-float-delay">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30 animate-float-delay">
                 <Quote size={20} className="text-primary" />
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function TestimonialSection() {
               key={`author-${current}`}
               className="tab-fade-enter flex flex-col items-center gap-3"
             >
-              <div className="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center overflow-hidden relative">
+              <div className="w-12 h-12 rounded-full bg-surface-dark border border-border flex items-center justify-center overflow-hidden relative">
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -87,7 +87,9 @@ export default function TestimonialSection() {
                 <p className="font-sans text-sm font-semibold text-text-main">
                   {item.name}
                 </p>
-                <p className="font-sans text-xs text-text-muted">{item.role}</p>
+                <p className="font-sans text-xs text-text-muted">
+                  {item.role}
+                </p>
               </div>
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
@@ -108,7 +110,7 @@ export default function TestimonialSection() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-text-muted hover:text-text-main hover:border-primary hover:scale-110 transition-all duration-200"
+              className="w-10 h-10 rounded-full border border-border bg-surface text-text-main hover:text-primary hover:border-primary hover:scale-110 transition-all duration-200"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={18} />
@@ -121,7 +123,9 @@ export default function TestimonialSection() {
                   key={idx}
                   onClick={() => goTo(idx)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    idx === current ? "bg-primary w-6" : "bg-border hover:bg-supporting-light w-2"
+                    idx === current
+                      ? "bg-primary w-6"
+                      : "bg-border hover:bg-primary/30 w-2"
                   }`}
                   aria-label={`Go to testimonial ${idx + 1}`}
                 />
@@ -130,7 +134,7 @@ export default function TestimonialSection() {
 
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-text-muted hover:text-text-main hover:border-primary hover:scale-110 transition-all duration-200"
+              className="w-10 h-10 rounded-full border border-border bg-surface text-text-main hover:text-primary hover:border-primary hover:scale-110 transition-all duration-200"
               aria-label="Next testimonial"
             >
               <ChevronRight size={18} />

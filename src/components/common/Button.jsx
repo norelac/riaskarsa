@@ -1,16 +1,16 @@
 const variants = {
   primary:
-    "bg-primary text-text-on-dark hover:bg-primary-hover focus:ring-[3px] focus:ring-primary-ring disabled:opacity-40 disabled:cursor-not-allowed",
+    "bg-primary text-primary-ink hover:bg-primary-hover focus:ring-[3px] focus:ring-primary-ring disabled:opacity-40 disabled:cursor-not-allowed",
   secondary:
     "bg-transparent border border-primary text-primary hover:bg-primary/10 focus:ring-[3px] focus:ring-primary-ring disabled:opacity-40 disabled:cursor-not-allowed",
   ghost:
-    "bg-transparent text-text-muted hover:bg-primary/[0.04] hover:text-text-on-dark",
+    "bg-transparent text-text-on-dark/70 hover:bg-primary/10 hover:text-primary",
 };
 
 const sizes = {
-  sm: "px-4 py-2 text-[13px] leading-none",
-  md: "px-6 py-3 text-sm leading-none",
-  lg: "px-8 py-3.5 text-sm leading-none",
+  sm: "px-5 py-2.5 text-xs leading-none",
+  md: "px-6 py-3 text-xs leading-none",
+  lg: "px-8 py-4 text-xs leading-none",
 };
 
 export default function Button({

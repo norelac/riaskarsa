@@ -70,7 +70,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="flex flex-col gap-4 lg:col-span-1">
-            <h3 className="font-serif text-2xl font-bold text-white">Rias Karsa</h3>
+            <h3 className="font-serif text-2xl font-bold text-primary">Rias Karsa</h3>
             <p className="text-sm text-text-on-dark/80 leading-relaxed">
               Platform komunitas, sertifikasi, dan direktori Makeup Artist
               Indonesia. Menghubungkan MUA, model, dan klien dalam satu
@@ -81,7 +81,7 @@ export default function Footer() {
           {/* Footer Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-sans text-base font-semibold text-white mb-4 tracking-wide">
+              <h4 className="font-sans text-base font-semibold text-primary mb-4 tracking-wide">
                 {category}
               </h4>
               <ul className="flex flex-col gap-2.5">
@@ -115,7 +115,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="w-9 h-9 rounded-full bg-primary/15 flex items-center justify-center text-primary hover:bg-primary hover:text-text-on-dark transition-all"
+                className="w-9 h-9 rounded-full bg-primary/15 flex items-center justify-center text-primary hover:bg-primary hover:text-text-main transition-all"
               >
                 <social.icon />
               </a>

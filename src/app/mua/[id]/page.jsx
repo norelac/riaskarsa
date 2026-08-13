@@ -19,10 +19,10 @@ export default function MuaDetailPage({ params }) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-serif text-2xl font-bold text-text-main mb-2">
+          <h1 className="font-serif text-2xl font-bold text-primary mb-2">
             MUA Tidak Ditemukan
           </h1>
-          <p className="text-text-muted mb-4">
+          <p className="text-text-on-dark/70 mb-4">
             Profil MUA yang Anda cari tidak tersedia.
           </p>
           <Link href="/#katalog">
@@ -42,11 +42,11 @@ export default function MuaDetailPage({ params }) {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-surface border-b border-border">
+      <div className="bg-supporting-dark border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link
             href="/#katalog"
-            className="inline-flex items-center gap-2 text-sm font-medium text-text-muted hover:text-text-main transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-text-on-dark transition-colors"
           >
             <ArrowLeft size={16} />
             Kembali ke Direktori
@@ -56,7 +56,7 @@ export default function MuaDetailPage({ params }) {
 
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-        <div className="bg-white rounded-[20px] border border-border shadow-soft overflow-hidden">
+        <div className="bg-surface-dark rounded-[20px] border border-border shadow-soft overflow-hidden">
           {/* Image */}
           <div className="aspect-[16/9] bg-surface flex items-center justify-center p-8 border-b border-border">
             <Image
@@ -72,17 +72,17 @@ export default function MuaDetailPage({ params }) {
           <div className="p-6 md:p-8">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <h1 className="font-serif text-2xl md:text-3xl font-bold text-text-main">
+                <h1 className="font-serif text-2xl md:text-3xl font-bold text-primary">
                   {mua.name}
                 </h1>
-                <p className="flex items-center gap-1.5 text-sm text-text-muted mt-1">
+                <p className="flex items-center gap-1.5 text-sm text-text-on-dark/70 mt-1">
                   <MapPin size={14} /> {mua.city}
                 </p>
               </div>
               {mua.isCertified && <Badge color="primary">Tersertifikasi</Badge>}
             </div>
 
-            <div className="flex items-center gap-5 mb-6 text-sm text-text-muted">
+            <div className="flex items-center gap-5 mb-6 text-sm text-text-on-dark/70">
               <span className="flex items-center gap-1.5">
                 <Star size={15} className="text-primary" /> {mua.rating} ({mua.reviews} ulasan)
               </span>
@@ -92,21 +92,21 @@ export default function MuaDetailPage({ params }) {
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xs font-semibold text-text-main mb-2 uppercase tracking-wide">
+              <h3 className="text-xs font-semibold text-text-on-dark/80 mb-2 uppercase tracking-wide">
                 Gaya Riasan
               </h3>
-              <p className="text-sm text-text-muted">{mua.style}</p>
+              <p className="text-sm text-text-on-dark/70">{mua.style}</p>
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xs font-semibold text-text-main mb-2 uppercase tracking-wide">
+              <h3 className="text-xs font-semibold text-text-on-dark/80 mb-2 uppercase tracking-wide">
                 Spesialisasi
               </h3>
               <div className="flex flex-wrap gap-2">
                 {mua.specialties.map((spec) => (
                   <span
                     key={spec}
-                    className="text-xs font-medium px-3 py-1 bg-surface rounded-full text-text-muted border border-border"
+                    className="text-xs font-medium px-3 py-1 bg-background rounded-full text-text-on-dark/70 border border-primary/30"
                   >
                     {spec}
                   </span>
@@ -114,8 +114,8 @@ export default function MuaDetailPage({ params }) {
               </div>
             </div>
 
-            <div className="mb-8 p-4 bg-surface rounded-[20px] border border-border">
-              <p className="text-xs text-text-muted mb-1">Mulai dari</p>
+            <div className="mb-8 p-4 bg-background rounded-[20px] border border-primary/30">
+              <p className="text-xs text-text-on-dark/70 mb-1">Mulai dari</p>
               <p className="text-2xl font-bold text-primary">{formatRupiah(mua.price)}</p>
             </div>
 
