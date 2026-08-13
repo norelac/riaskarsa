@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { MapPin, BadgeCheck, Star, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import useFilter from "@/hooks/useFilter";
 import { muas } from "@/data/muas";
 import { formatRupiah } from "@/utils/formatters";
@@ -9,6 +11,7 @@ import Image from "next/image";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
 export default function DirectorySection() {
+  const [showAll, setShowAll] = useState(false);
   const headerRef = useScrollReveal();
   const filterRef = useScrollReveal();
   const gridRef = useScrollReveal({ threshold: 0.05 });
@@ -21,6 +24,8 @@ export default function DirectorySection() {
     filteredList,
     resetFilters,
   } = useFilter(muas);
+
+  const visibleList = showAll ? filteredList : filteredList.slice(0, 3);
 
   return (
     <section id="katalog" className="bg-background section-pad scroll-mt-24">
@@ -99,27 +104,47 @@ export default function DirectorySection() {
             ref={gridRef}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {filteredList.map((mua) => (
+            {visibleList.map((mua) => (
               <Link
                 key={mua.id}
                 href={`/mua/${mua.id}`}
                 className="group card-hover bg-surface-dark border border-border rounded-[20px] overflow-hidden flex flex-col"
               >
-                <div className="aspect-[4/3] bg-background flex items-center justify-center p-6 border-b border-border relative">
+                <div className="relative aspect-[4/3] bg-background border-b border-border overflow-hidden">
                   <Image
                     src={mua.image}
                     alt={mua.name}
-                    width={400}
-                    height={300}
-                    className="w-full h-full object-contain"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5">
+                    <BadgeCheck size={14} className="text-primary" />
+                    <span className="text-[10px] font-medium tracking-wide text-text-on-dark">
+                      TERVERIFIKASI
+                    </span>
+                  </div>
+                  <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5">
+                    <MapPin size={13} className="text-primary" />
+                    <span className="text-[11px] font-medium text-text-on-dark">
+                      {mua.city}
+                    </span>
+                  </div>
                 </div>
                 <div className="p-5 flex flex-col gap-3 flex-1">
-                  <h4 className="heading-card group-hover:text-primary-hover transition-colors">
-                    {mua.name}
-                  </h4>
+                  <div className="flex items-start justify-between gap-2">
+                    <h4 className="heading-card group-hover:text-primary-hover transition-colors">
+                      {mua.name}
+                    </h4>
+                    {mua.isCertified && (
+                      <span className="flex items-center gap-1 rounded-full bg-primary/10 border border-primary/30 px-2.5 py-1 text-[10px] font-medium text-primary">
+                        <BadgeCheck size={11} />
+                        Sertifikat
+                      </span>
+                    )}
+                  </div>
                   <span className="text-xs font-light text-supporting-light">
-                    {mua.style}
+                    {mua.style} · Pengalaman {mua.experience}
                   </span>
                   <div className="flex flex-wrap gap-1.5 mt-1">
                     {mua.specialties.map((spec) => (
@@ -135,14 +160,16 @@ export default function DirectorySection() {
                     <span className="text-base text-primary font-normal">
                       {formatRupiah(mua.price)}
                     </span>
-                    <span className="text-xs text-text-on-dark/60">
-                      ★ {mua.rating} ({mua.reviews})
+                    <span className="inline-flex items-center gap-1 text-xs text-text-on-dark/60">
+                      <Star size={13} className="text-primary fill-primary" />
+                      <span className="font-medium text-text-on-dark">{mua.rating}</span>
+                      <span className="text-text-on-dark/50">({mua.reviews})</span>
                     </span>
                   </div>
                   <div className="mt-3 text-center">
-                    <span className="inline-flex items-center justify-center gap-1 text-xs font-medium text-primary hover:text-primary-hover transition-colors cursor-pointer">
-                      LIHAT SELENGKAPNYA
-                    </span>
+                    <Button variant="secondary" size="sm" className="w-full group-hover:bg-primary/10">
+                      LIHAT SELENGKAPNYA <ArrowRight size={13} />
+                    </Button>
                   </div>
                 </div>
               </Link>
@@ -164,11 +191,15 @@ export default function DirectorySection() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <Link href="/#katalog">
-            <Button variant="secondary" size="md">
-              LIHAT SEMUA PENATA RIAS
-            </Button>
-          </Link>
+          {filteredList.length > 3 && (
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
+            >
+              {showAll ? "SEMBUNYIKAN" : "LIHAT SEMUA PENATA RIAS"}
+              {showAll ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            </button>
+          )}
         </div>
       </div>
     </section>

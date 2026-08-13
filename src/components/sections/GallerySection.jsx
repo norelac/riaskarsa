@@ -22,10 +22,15 @@ const galleryImages = [
   { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.svg", alt: "Korean dewy makeup look", tab: "Hasil Riasan" },
   { src: "/asset/febrian-zakaria-dVkKzzoUJfg-unsplash 1.svg", alt: "Model practice session", tab: "Workshop" },
   { src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.svg", alt: "Fashion show prep", tab: "Catwalk" },
+  { src: "/asset/aritra-roy-xwaQ6FFqmLQ-unsplash 1.svg", alt: "Behind the scenes photoshoot", tab: "Lain-Lain" },
+  { src: "/asset/krisna-putra-pratama-lKF-MdtuIss-unsplash 1.svg", alt: "Creative studio portrait", tab: "Lain-Lain" },
+  { src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.svg", alt: "Bridal trial session", tab: "Workshop" },
+  { src: "/asset/rizky-motion-D_5Kf6Du6JY-unsplash 1.svg", alt: "Photoshoot session", tab: "Pemotretan" },
 ];
 
 export default function GallerySection() {
   const [activeTab, setActiveTab] = useState("Semua");
+  const [showAll, setShowAll] = useState(false);
   const headerRef = useScrollReveal();
   const gridRef = useScrollReveal({ threshold: 0.05 });
 
@@ -34,11 +39,13 @@ export default function GallerySection() {
       ? galleryImages
       : galleryImages.filter((img) => img.tab === activeTab);
 
+  const visibleImages = showAll ? filteredImages : filteredImages.slice(0, 6);
+
   return (
     <section id="galeri" className="bg-background section-pad scroll-mt-24">
       <div className="container-rias">
         {/* Section Header */}
-        <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
+        <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-6 md:mb-8">
           <h2 className="heading-section mb-4">
             Galeri Karya &amp; Kegiatan
           </h2>
@@ -49,7 +56,7 @@ export default function GallerySection() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="reveal flex flex-wrap justify-center gap-2 mb-10">
+        <div className="reveal flex flex-wrap justify-center gap-2 mb-4">
           {galleryTabs.map((tab) => (
             <button
               key={tab}
@@ -65,14 +72,14 @@ export default function GallerySection() {
           ))}
         </div>
 
-        {/* Gallery Grid (masonry) */}
-        <div ref={gridRef} className="columns-1 sm:columns-2 lg:columns-3 gap-6">
-          {filteredImages.map((image, index) => (
+        {/* Gallery Grid */}
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visibleImages.map((image, index) => (
             <div
               key={index}
-              className={`reveal reveal-delay-${(index % 3) + 1} break-inside-avoid mb-6 group relative rounded-[20px] border border-border overflow-hidden bg-surface-dark card-hover cursor-default`}
+              className={`group relative rounded-[20px] border border-border overflow-hidden bg-surface-dark card-hover cursor-default`}
             >
-              <div className={`relative ${["aspect-[4/5]", "aspect-square", "aspect-[3/4]"][index % 3]}`}>
+              <div className="relative aspect-[4/5]">
                 <Image
                   src={image.src}
                   alt={image.alt}
@@ -91,11 +98,19 @@ export default function GallerySection() {
         </div>
 
         {/* CTA */}
-        <div className="mt-10 text-center">
-          <button className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary-hover transition-colors">
-            LIHAT SEMUA
-          </button>
-        </div>
+        {filteredImages.length > 6 && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
+            >
+              {showAll ? "SEMBUNYIKAN" : "LIHAT SEMUA"}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {showAll ? <path d="m18 15-6-6-6 6" /> : <path d="m6 9 6 6 6-6" />}
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
