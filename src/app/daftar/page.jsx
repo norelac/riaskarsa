@@ -39,7 +39,7 @@ export default function DaftarPage() {
             Daftar Akun Rias Karsa
           </h1>
           <p className="text-base text-text-on-dark/70">
-            Bergabunglah dengan komunitas penata rias profesional Nusantara.
+            Bergabunglah dengan komunitas penata rias profesional Semarang Raya.
           </p>
         </div>
 

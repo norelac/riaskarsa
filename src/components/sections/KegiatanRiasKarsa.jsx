@@ -29,7 +29,7 @@ const activities = [
     tag: "Peluang Freelance",
     title: "Open Model Call",
     description:
-      "Peluang kerja freelance sebagai model bagi talenta muda untuk sesi praktik dan workshop. Terhubung langsung dengan MUA profesional di seluruh Indonesia.",
+      "Peluang kerja freelance sebagai model bagi talenta muda untuk sesi praktik dan workshop. Terhubung langsung dengan MUA profesional di Semarang Raya.",
     image: "/asset/febrian-zakaria-dVkKzzoUJfg-unsplash 1.svg",
     ctaLabel: "DAFTAR MODEL",
     ctaHref: "/apply-model",

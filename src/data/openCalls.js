@@ -3,7 +3,7 @@ export const openCalls = [
     id: 1,
     title: "Masterclass Bridal Glam by Sarah Ayu",
     date: "15 September 2026",
-    location: "Jakarta (Rias Karsa Studio)",
+    location: "Semarang (Rias Karsa Studio)",
     compensation: "Paid (IDR 350,000) + Portfolio Photoshoot",
     spotsLeft: 2,
     requirements: [
@@ -18,7 +18,7 @@ export const openCalls = [
     id: 2,
     title: "Traditional Sunda Siger Workshop",
     date: "22 September 2026",
-    location: "Bandung (Hotel Savoy Homann)",
+    location: "Ungaran (Hotel Grand Orchid Ungaran)",
     compensation: "Professional Certificate + Goodie Bag + Meals",
     spotsLeft: 3,
     requirements: [
@@ -33,7 +33,7 @@ export const openCalls = [
     id: 3,
     title: "Editorial Makeup - Fashion Runway Practice",
     date: "05 Oktober 2026",
-    location: "Surabaya (Creative Hub)",
+    location: "Semarang (Creative Hub)",
     compensation: "Paid (IDR 500,000) + Runway Experience",
     spotsLeft: 1,
     requirements: [
@@ -48,7 +48,7 @@ export const openCalls = [
     id: 4,
     title: "Korean Dewy Look Private Practice",
     date: "12 Oktober 2026",
-    location: "Yogyakarta (Studio Karsa Jogja)",
+    location: "Salatiga (Studio Karsa Salatiga)",
     compensation: "Free Makeup Session + Coffee Voucher + Portfolio Docs",
     spotsLeft: 2,
     requirements: [

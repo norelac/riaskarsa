@@ -25,8 +25,8 @@ import RatingStars from "@/components/common/RatingStars";
 const WA_NUMBER = "6285819997505";
 
 const priceRangeLabel = {
-  low: "Budget",
-  medium: "Mid-range",
+  low: "Ekonomis",
+  medium: "Menengah",
   high: "Premium",
 };
 
@@ -99,12 +99,10 @@ export default function MuaDetailPage({ params }) {
       </div>
 
       {/* Content */}
-      <div className="container-rias py-10 md:py-14 pb-24 lg:pb-14">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 lg:gap-10 items-start">
-          {/* ── Main Column ── */}
-          <div className="flex flex-col gap-8">
-            {/* Profile card */}
-            <div className="grid grid-cols-1 sm:grid-cols-[280px_1fr] gap-6 md:gap-8 bg-surface-dark border border-border rounded-[20px] p-6 md:p-8">
+      <div className="container-rias py-8 md:py-12 pb-20 lg:pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-7 lg:gap-9">
+          {/* ── Profile Card ── */}
+            <div className="grid grid-cols-1 sm:grid-cols-[280px_1fr] gap-5 md:gap-7 bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 lg:col-start-1 lg:row-start-1">
               <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden bg-background border border-border">
                 <Image
                   src={mua.image}
@@ -169,12 +167,12 @@ export default function MuaDetailPage({ params }) {
             </div>
 
             {/* Portfolio */}
-            <div id="portofolio" className="scroll-mt-24">
+            <div id="portofolio" className="scroll-mt-24 lg:col-span-2 lg:row-start-2">
               <h2 className="heading-section mb-1">Portofolio Karya</h2>
               <p className="text-sm text-text-on-dark/60 mb-6">
                 Beberapa hasil riasan terbaru dari {mua.name}.
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 {mua.portfolio.map((item, idx) => (
                   <button
                     key={item.src}
@@ -199,7 +197,7 @@ export default function MuaDetailPage({ params }) {
             </div>
 
             {/* Reviews */}
-            <div>
+            <div className="lg:col-span-2 lg:row-start-3">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
                 <h2 className="heading-section mb-0">Ulasan Klien</h2>
                 <div className="flex items-center gap-2 text-sm">
@@ -216,7 +214,7 @@ export default function MuaDetailPage({ params }) {
                 {reviews.map((r) => (
                   <div
                     key={`${r.muaId}-${r.name}`}
-                    className="bg-surface-dark border border-border rounded-[20px] p-5 flex flex-col gap-3"
+                    className="bg-surface-dark border border-border rounded-[20px] p-4 md:p-5 flex flex-col gap-3"
                   >
                     <div className="flex items-center justify-between">
                       <p className="text-sm font-semibold text-text-on-dark">
@@ -236,9 +234,9 @@ export default function MuaDetailPage({ params }) {
             </div>
 
             {/* Related MUA */}
-            <div>
+            <div className="lg:col-span-2 lg:row-start-4">
               <h2 className="heading-section mb-6">MUA Lainnya</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
                 {related.map((rel) => (
                   <Link
                     key={rel.id}
@@ -278,11 +276,10 @@ export default function MuaDetailPage({ params }) {
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* ── Sticky Booking Aside ── */}
-          <aside className="lg:sticky lg:top-24">
-            <div className="bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 shadow-elevated">
+          {/* ── Booking Aside ── */}
+          <aside className="lg:col-start-2 lg:row-start-1 lg:self-stretch">
+            <div className="h-full bg-surface-dark border border-border rounded-[20px] p-5 md:p-7 shadow-elevated flex flex-col">
               <p className="text-xs text-text-on-dark/70 mb-1">Mulai dari</p>
               <div className="flex items-end justify-between gap-3 mb-5">
                 <p className="font-serif text-2xl sm:text-3xl font-bold text-primary">
@@ -291,7 +288,7 @@ export default function MuaDetailPage({ params }) {
                 <Badge color="primary">{priceRangeLabel[mua.priceRange]}</Badge>
               </div>
 
-              <div className="flex flex-col gap-3 mb-6">
+              <div className="flex flex-col gap-2.5 mb-6">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 size={18} className="text-primary shrink-0 mt-0.5" />
                   <div>
@@ -304,24 +301,13 @@ export default function MuaDetailPage({ params }) {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 size={18} className="text-primary shrink-0 mt-0.5" />
+                  <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-medium text-text-on-dark">
-                      Pengalaman {mua.experience}
+                      Melayani Area Semarang Raya
                     </p>
                     <p className="text-xs text-text-on-dark/60">
-                      Portofolio & rating terverifikasi
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Clock size={18} className="text-primary shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-sm font-medium text-text-on-dark">
-                      Estimasi respons &lt; 1 jam
-                    </p>
-                    <p className="text-xs text-text-on-dark/60">
-                      Respon cepat via WhatsApp
+                      Semarang, Ungaran, Salatiga, Kendal, Demak
                     </p>
                   </div>
                 </div>
@@ -331,10 +317,10 @@ export default function MuaDetailPage({ params }) {
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-primary text-primary-ink py-3.5 rounded-full text-sm font-semibold hover:bg-primary-hover transition-colors focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
+                className="mt-auto flex items-center justify-center gap-2 w-full bg-primary text-primary-ink py-3.5 rounded-full text-sm font-semibold hover:bg-primary-hover transition-colors focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
               >
                 <MessageCircle size={18} />
-                Hubungi via WhatsApp
+                Hubungi lewat WhatsApp
               </a>
               <a
                 href="#portofolio"

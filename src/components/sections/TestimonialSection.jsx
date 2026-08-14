@@ -107,37 +107,37 @@ export default function TestimonialSection() {
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-4 md:gap-6 mt-8 md:mt-10">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-border bg-surface text-text-main hover:text-primary hover:border-primary hover:scale-110 transition-all duration-200"
-              aria-label="Previous testimonial"
+              className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-border bg-surface text-text-main shadow-soft hover:text-primary hover:border-primary hover:bg-primary/5 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
+              aria-label="Testimoni sebelumnya"
             >
-              <ChevronLeft size={18} />
+              <ChevronLeft size={18} className="mx-auto" />
             </button>
 
             {/* Dots */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               {testimonials.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => goTo(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-[3px] focus:ring-primary-ring ${
                     idx === current
                       ? "bg-primary w-6"
                       : "bg-border hover:bg-primary/30 w-2"
                   }`}
-                  aria-label={`Go to testimonial ${idx + 1}`}
+                  aria-label={`Ke testimoni ${idx + 1}`}
                 />
               ))}
             </div>
 
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full border border-border bg-surface text-text-main hover:text-primary hover:border-primary hover:scale-110 transition-all duration-200"
-              aria-label="Next testimonial"
+              className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-border bg-surface text-text-main shadow-soft hover:text-primary hover:border-primary hover:bg-primary/5 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
+              aria-label="Testimoni berikutnya"
             >
-              <ChevronRight size={18} />
+              <ChevronRight size={18} className="mx-auto" />
             </button>
           </div>
         </div>

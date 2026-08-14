@@ -15,7 +15,7 @@ const dmSans = DM_Sans({
 
 export const metadata = {
   title: "Rias Karsa — Komunitas, Sertifikasi & Direktori MUA",
-  description: "Platform komunitas, sertifikasi, dan direktori Makeup Artist (MUA) Indonesia. Temukan MUA terpercaya, daftar masterclass, dan jadi bagian dari komunitas.",
+  description: "Platform komunitas, sertifikasi, dan direktori Makeup Artist (MUA) Semarang Raya. Temukan MUA terpercaya, daftar masterclass, dan jadi bagian dari komunitas.",
 };
 
 export default function RootLayout({ children }) {

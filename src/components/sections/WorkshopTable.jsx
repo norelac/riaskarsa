@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronUp, MapPin, CalendarDays } from "lucide-react";
+import { ChevronDown, ChevronUp, MapPin, CalendarDays, BadgeCheck } from "lucide-react";
 import { workshopSchedule } from "@/data/workshopSchedule";
 import Badge from "@/components/common/Badge";
 import Button from "@/components/common/Button";
@@ -21,72 +21,80 @@ export default function WorkshopTable() {
         {/* Section Header */}
         <div ref={headerRef} className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <h2 className="heading-section mb-4">
-            Jadwal Workshop &amp; Open Call Model
+            Jadwal Workshop dan Open Call Model
           </h2>
           <p className="text-sm md:text-base text-text-on-dark/80 leading-relaxed">
-            Ikuti masterclass berstandar industri dan buka peluang menjadi model
-            freelance di sesi praktik kami.
+            Ingin mencoba pengalaman dirias oleh MUA profesional dan mendapat
+            portofolio? Ayo daftarkan dirimu menjadi model sekarang!
           </p>
         </div>
 
         {/* Workshop Table (desktop) */}
-        <div ref={tableRef} className="reveal overflow-x-auto hidden md:block">
-          <table className="w-full min-w-[820px] text-left border-collapse">
-            <thead>
-              <tr className="bg-supporting-light text-text-main">
-                <th className="px-5 py-4 font-sans text-sm md:text-base font-bold uppercase tracking-wider">
-                  Tanggal &amp; Lokasi
-                </th>
-                <th className="px-5 py-4 font-sans text-sm md:text-base font-bold uppercase tracking-wider">
-                  Tema
-                </th>
-                <th className="px-5 py-4 font-sans text-sm md:text-base font-bold uppercase tracking-wider">
-                  Kriteria
-                </th>
-                <th className="px-5 py-4 font-sans text-sm md:text-base font-bold uppercase tracking-wider">
-                  Benefit / Fee
-                </th>
-                <th className="px-5 py-4 font-sans text-sm md:text-base font-bold uppercase tracking-wider text-center">
-                  Aksi
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {visibleSchedule.map((item, index) => (
-                <tr
-                  key={item.id}
-                  className={index % 2 === 0 ? "bg-surface-dark" : "bg-background"}
-                >
-                  <td className="px-5 py-5">
-                    <span className="block font-medium text-primary text-base">
+        <div ref={tableRef} className="reveal hidden md:block">
+          <div className="overflow-x-auto rounded-[20px] border-[0.5px] border-primary">
+            <table className="w-full min-w-[900px] text-center border-separate border-spacing-0">
+              <thead>
+                <tr className="bg-supporting-light text-text-main">
+                  <th className="px-5 py-5 font-sans text-sm md:text-base font-bold">
+                    Tanggal &amp; Lokasi
+                  </th>
+                  <th className="px-5 py-5 font-sans text-sm md:text-base font-bold">
+                    Kebutuhan / Tema
+                  </th>
+                  <th className="px-5 py-5 font-sans text-sm md:text-base font-bold">
+                    Kriteria
+                  </th>
+                  <th className="px-5 py-5 font-sans text-sm md:text-base font-bold">
+                    Benefit / Fee
+                  </th>
+                  <th className="px-5 py-5 font-sans text-sm md:text-base font-bold">
+                    Aksi
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleSchedule.map((item) => (
+                  <tr key={item.id}>
+                  <td className="px-5 py-6 border-t-[0.5px] border-primary">
+                    <span className="block text-sm md:text-base leading-[30px] text-supporting-light">
                       {item.date}
                     </span>
-                    <span className="block text-xs text-text-on-dark/60 mt-1">
+                    <span className="block text-sm md:text-base leading-[30px] text-supporting-light">
                       {item.location}
                     </span>
                   </td>
-                  <td className="px-5 py-5 font-sans text-base text-primary">
+                  <td className="px-5 py-6 border-t-[0.5px] border-primary text-sm md:text-base leading-[30px] text-supporting-light">
                     {item.theme}
                   </td>
-                  <td className="px-5 py-5 font-sans text-base text-primary">
-                    {item.spots}
+                  <td className="px-5 py-6 border-t-[0.5px] border-primary text-sm md:text-base leading-[30px] text-supporting-light">
+                    {item.criteria}
                   </td>
-                  <td className="px-5 py-5 font-sans text-base text-primary">
-                    {item.fee}
+                  <td className="px-5 py-6 border-t-[0.5px] border-primary">
+                    <span className="block text-sm md:text-base leading-[30px] text-supporting-light">
+                      {item.fee}
+                    </span>
+                    <span className="block text-sm md:text-base leading-[30px] text-supporting-light">
+                      {item.benefits}
+                    </span>
                   </td>
-                  <td className="px-5 py-5 text-center">
+                  <td className="px-5 py-6 border-t-[0.5px] border-primary">
                     {item.status === "open" ? (
-                      <Button variant="primary" size="sm">
-                        Daftar Model
-                      </Button>
+                      <Link href="/apply-model">
+                        <Button variant="primary" size="sm">
+                          Daftar Model
+                        </Button>
+                      </Link>
                     ) : (
-                      <Badge color="warning">Kuota Penuh</Badge>
+                      <span className="font-sans text-sm md:text-base text-badge-error">
+                        Kuota Penuh
+                      </span>
                     )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
         {/* Workshop Cards (mobile) */}
@@ -125,6 +133,10 @@ export default function WorkshopTable() {
                     <MapPin size={14} className="text-primary" />
                     {item.location}
                   </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <BadgeCheck size={14} className="text-primary" />
+                    Kriteria: {item.criteria}
+                  </span>
                   <div className="mt-2">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-[11px] text-text-on-dark/60">
@@ -142,6 +154,9 @@ export default function WorkshopTable() {
                     </div>
                   </div>
                   <span className="text-primary font-medium mt-1">Fee: {item.fee}</span>
+                  <span className="text-xs font-light text-supporting-light">
+                    {item.benefits}
+                  </span>
                 </div>
                 {!isFull && (
                   <Link href="/apply-model">

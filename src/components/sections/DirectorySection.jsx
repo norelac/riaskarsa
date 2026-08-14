@@ -28,11 +28,11 @@ export default function DirectorySection() {
   const visibleList = showAll ? filteredList : filteredList.slice(0, 3);
 
   return (
-    <section id="katalog" className="bg-background section-pad scroll-mt-24">
+    <section id="katalog" className="bg-surface-dark section-pad scroll-mt-24">
       <div className="container-rias">
         <div
           ref={headerRef}
-          className="reveal text-center max-w-2xl mx-auto mb-12 md:mb-16"
+          className="reveal text-center max-w-2xl mx-auto mb-6 md:mb-8"
         >
           <h2 className="heading-section mb-4">
             Direktori MUA Terverifikasi
@@ -51,13 +51,14 @@ export default function DirectorySection() {
             <select
               value={filters.city}
               onChange={(e) => setCity(e.target.value)}
-              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-background border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
             >
               <option value="all">Lokasi: Semua</option>
-              <option value="Jakarta">Jakarta</option>
-              <option value="Bandung">Bandung</option>
-              <option value="Surabaya">Surabaya</option>
-              <option value="Yogyakarta">Yogyakarta</option>
+              <option value="Semarang">Semarang</option>
+              <option value="Ungaran">Ungaran</option>
+              <option value="Salatiga">Salatiga</option>
+              <option value="Kendal">Kendal</option>
+              <option value="Demak">Demak</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-on-dark/60">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -68,7 +69,7 @@ export default function DirectorySection() {
             <select
               value={filters.style}
               onChange={(e) => setStyle(e.target.value)}
-              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-background border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
             >
               <option value="all">Gaya: Semua</option>
               <option value="Soft Glam">Soft Glam</option>
@@ -86,7 +87,7 @@ export default function DirectorySection() {
             <select
               value={filters.priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-surface-dark border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-background border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
             >
               <option value="all">Harga: Semua</option>
               <option value="low">Budget (&lt; Rp 500rb)</option>
@@ -108,7 +109,7 @@ export default function DirectorySection() {
               <Link
                 key={mua.id}
                 href={`/mua/${mua.id}`}
-                className="group card-hover bg-surface-dark border border-border rounded-[20px] overflow-hidden flex flex-col"
+                className="group card-hover bg-background border border-border rounded-[20px] overflow-hidden flex flex-col"
               >
                 <div className="relative aspect-[4/3] bg-background border-b border-border overflow-hidden">
                   <Image
@@ -150,7 +151,7 @@ export default function DirectorySection() {
                     {mua.specialties.map((spec) => (
                       <span
                         key={spec}
-                        className="text-[11px] font-light px-2 py-0.5 bg-background rounded-full text-supporting-light border border-primary/30"
+                        className="text-[11px] font-light px-2 py-0.5 bg-surface-dark rounded-full text-supporting-light border border-primary/30"
                       >
                         {spec}
                       </span>
@@ -176,7 +177,7 @@ export default function DirectorySection() {
             ))}
           </div>
         ) : (
-          <div className="bg-surface-dark border border-border rounded-[20px] p-12 text-center">
+          <div className="bg-background border border-border rounded-[20px] p-12 text-center">
             <p className="font-sans text-base text-text-on-dark/60">
               Tidak ditemukan MUA yang sesuai filter.
             </p>

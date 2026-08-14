@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
     dangerouslyAllowSVG: true,
-    contentDispositionType: "attachment",
+    contentDispositionType: "inline",
     contentSecurityPolicy: "default-src 'self' data:image/svg+xml;base64,*",
   },
 };

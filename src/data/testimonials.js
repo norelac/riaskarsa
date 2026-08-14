@@ -43,7 +43,7 @@ export const testimonials = [
     id: 6,
     name: "Melati Kusuma",
     role: "Klien",
-    testimonial: "Awalnya bingung cari MUA yang bisa datang ke Bandung. Filter di direktori Rias Karsa sangat membantu! Saya bisa lihat harga, lihat hasil kerja, dan langsung chat via WhatsApp. Simpel dan efisien.",
+    testimonial: "Awalnya bingung cari MUA yang bisa datang ke Semarang. Filter di direktori Rias Karsa sangat membantu! Saya bisa lihat harga, lihat hasil kerja, dan langsung chat via WhatsApp. Simpel dan efisien.",
     rating: 5,
     image: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.svg"
   }

@@ -1,26 +1,44 @@
-import { MapPin, Phone, Mail, Globe } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
-const footerLinks = {
-  Navigasi: [
-    { label: "Beranda", href: "#hero" },
-    { label: "Tentang Kami", href: "#tentang" },
-    { label: "Program & Event", href: "#program" },
-    { label: "Galeri", href: "#galeri" },
-    { label: "Kontak", href: "#kontak" },
-  ],
-  Legalitas: [
-    { label: "Syarat & Ketentuan", href: "#" },
-    { label: "Kebijakan Privasi", href: "#" },
-    { label: "Kode Etik", href: "#" },
-  ],
-  Kontak: [
-    { label: "WhatsApp: 0812-3456-7890", href: "https://wa.me/6281234567890", external: true },
-    { label: "Instagram: @rias.karsa.community", href: "https://instagram.com/rias.karsa.community", external: true },
-    { label: "TikTok: @rias.karsa.community", href: "https://tiktok.com/@rias.karsa.community", external: true },
-    { label: "Email: riaskarsa@gmail.com", href: "mailto:riaskarsa@gmail.com" },
-    { label: "Jl. Pemuda, Semarang, Jawa Tengah", href: "https://maps.google.com/?q=Jl.+Pemuda,+Semarang,+Jawa+Tengah", external: true },
-  ],
-};
+const navLinks = [
+  { label: "Beranda", href: "#hero" },
+  { label: "Tentang Kami", href: "#tentang" },
+  { label: "Program & Event", href: "#program" },
+  { label: "Galeri", href: "#galeri" },
+  { label: "Kontak", href: "#kontak" },
+];
+
+const legalLinks = [
+  { label: "Syarat & Ketentuan", href: "#" },
+  { label: "Kebijakan Privasi", href: "#" },
+  { label: "Kode Etik", href: "#" },
+];
+
+const contactLinks = [
+  { label: "0812-3456-7890", href: "https://wa.me/6281234567890", external: true, Icon: Phone },
+  { label: "@rias.karsa.community", href: "https://instagram.com/rias.karsa.community", external: true, Icon: InstagramContactIcon },
+  { label: "@rias.karsa.community", href: "https://tiktok.com/@rias.karsa.community", external: true, Icon: TiktokIcon },
+  { label: "riaskarsa@gmail.com", href: "mailto:riaskarsa@gmail.com", Icon: Mail },
+  { label: "Jl. Pemuda, Semarang, Jawa Tengah", href: "https://maps.google.com/?q=Jl.+Pemuda,+Semarang,+Jawa+Tengah", external: true, Icon: MapPin },
+];
+
+function TiktokIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  );
+}
+
+function InstagramContactIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 function InstagramIcon() {
   return (
@@ -32,7 +50,7 @@ function InstagramIcon() {
   );
 }
 
-function TiktokIcon() {
+function TiktokSocialIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -51,39 +69,37 @@ function YoutubeIcon() {
 
 const socialLinks = [
   { icon: InstagramIcon, href: "https://instagram.com/rias.karsa.community", label: "Instagram" },
-  { icon: TiktokIcon, href: "https://tiktok.com/@rias.karsa.community", label: "TikTok" },
+  { icon: TiktokSocialIcon, href: "https://tiktok.com/@rias.karsa.community", label: "TikTok" },
   { icon: YoutubeIcon, href: "https://youtube.com/@rias.karsa.community", label: "YouTube" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative bg-supporting-dark text-text-on-dark section-pad">
+    <footer className="relative bg-supporting-dark text-text-on-dark pt-16 md:pt-[120px] pb-[100px]">
       <div className="container-rias">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        {/* Top Row */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-[235px]">
           {/* Brand */}
-          <div className="flex flex-col gap-4 lg:col-span-1">
-            <h3 className="font-serif text-2xl font-normal text-primary">RIAS KARSA</h3>
-            <p className="text-sm text-text-on-dark/80 leading-relaxed">
-              Platform komunitas, sertifikasi, dan direktori Makeup Artist
-              Indonesia. Menghubungkan MUA, model, dan klien dalam satu
-              ekosistem.
+          <div className="flex flex-col gap-5 lg:max-w-[265px]">
+            <h3 className="font-serif text-[32px] font-normal text-primary tracking-[-0.8px]">
+              RIAS KARSA
+            </h3>
+            <p className="font-sans text-base leading-[25.6px] tracking-[0.32px] text-text-on-dark">
+              Menyulam cipta, memancarkan anggunnya paras Nusantara.
             </p>
           </div>
 
-          {/* Footer Links */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h4 className="font-sans text-base font-semibold text-primary mb-4 tracking-wide">
-                {category}
-              </h4>
-              <ul className="flex flex-col gap-2.5">
-                {links.map((link) => (
+          {/* Nav Columns */}
+          <div className="flex flex-col md:flex-row flex-wrap gap-10 md:gap-[80px]">
+            {/* Navigasi */}
+            <div className="flex flex-col gap-5">
+              <h4 className="font-sans text-base font-medium text-primary">NAVIGASI</h4>
+              <ul className="flex flex-col gap-3">
+                {navLinks.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      className="text-sm text-text-on-dark/80 hover:text-primary transition-colors"
+                      className="font-sans text-base text-text-on-dark hover:text-primary transition-colors"
                     >
                       {link.label}
                     </a>
@@ -91,15 +107,52 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-          ))}
+
+            {/* Legalitas */}
+            <div className="flex flex-col gap-5">
+              <h4 className="font-sans text-base font-medium text-primary">LEGALITAS</h4>
+              <ul className="flex flex-col gap-3">
+                {legalLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="font-sans text-base text-text-on-dark hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Kontak */}
+            <div className="flex flex-col gap-5">
+              <h4 className="font-sans text-base font-medium text-primary">KONTAK</h4>
+              <ul className="flex flex-col gap-3">
+                {contactLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      className="flex items-center gap-3 font-sans text-base text-text-on-dark hover:text-primary transition-colors"
+                    >
+                      <link.Icon size={24} className="text-text-on-dark shrink-0" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-primary/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-text-on-dark/60">
+        {/* Copyright */}
+        <div className="mt-[100px] pt-8 border-t border-primary/20 text-center">
+          <p className="font-sans text-base leading-[25.6px] text-primary">
             &copy; {new Date().getFullYear()} Rias Karsa Semarang, All Rights Reserved
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-4 mt-6">
             {socialLinks.map((social) => (
               <a
                 key={social.label}

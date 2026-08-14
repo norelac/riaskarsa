@@ -96,6 +96,14 @@ export const muaReviews = [
       "Riasan wisuda saya dipuji banyak teman! Harganya worth banget untuk hasil segini. Prosesnya juga cepet kurang dari sejam.",
   },
   {
+    muaId: 4,
+    name: "Dinda Permata",
+    rating: 4,
+    date: "25 Mei 2026",
+    comment:
+      "Riasan lamaran saya hasilnya lembut dan tetap syar'i. Cantika ramah dan mendengarkan keinginan saya. Pengalaman booking-nya juga mudah dan cepat.",
+  },
+  {
     muaId: 5,
     name: "Tara Maharani",
     rating: 5,
@@ -141,6 +149,6 @@ export const muaReviews = [
     rating: 5,
     date: "12 Juni 2026",
     comment:
-      "Pre-wedding saya hasilnya soft dan romantis. Sekar paham banget konsep yang diinginkan. Best value MUA di Bandung sejauh ini!",
+      "Pre-wedding saya hasilnya soft dan romantis. Sekar paham banget konsep yang diinginkan. Best value MUA di Semarang Raya sejauh ini!",
   },
 ];
