@@ -122,10 +122,10 @@ export default function TestimonialSection() {
                 <button
                   key={idx}
                   onClick={() => goTo(idx)}
-                  className={`p-4 -m-4 h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-[3px] focus:ring-primary-ring ${
+                  className={`p-5 -m-5 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-[3px] focus:ring-primary-ring ${
                     idx === current
-                      ? "bg-primary w-6"
-                      : "bg-border hover:bg-primary/30 w-2"
+                      ? "bg-primary w-10"
+                      : "bg-border hover:bg-primary/30 w-3"
                   }`}
                   aria-label={`Ke testimoni ${idx + 1}`}
                 />

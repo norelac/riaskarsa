@@ -158,10 +158,10 @@ export default function HeroSection() {
                 key={idx}
                 onClick={() => goTo(idx)}
                 aria-label={`Ke foto ${idx + 1}`}
-                className={`p-4 -m-4 rounded-full transition-all duration-300 ${
+                className={`p-5 -m-5 rounded-full transition-all duration-300 ${
                   idx === current
-                    ? "w-8 h-2.5 bg-primary"
-                    : "w-2.5 h-2.5 bg-primary/40 hover:bg-primary/70"
+                    ? "w-10 h-3 bg-primary"
+                    : "w-3 h-3 bg-primary/40 hover:bg-primary/70"
                 }`}
               />
             ))}
