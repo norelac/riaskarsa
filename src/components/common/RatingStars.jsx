@@ -1,8 +1,9 @@
 import { Star } from "lucide-react";
 
 export default function RatingStars({ rating = 0, size = 16, className = "" }) {
-  const full = Math.floor(rating);
-  const hasHalf = rating - full >= 0.5;
+  const rounded = Math.round(rating * 2) / 2;
+  const full = Math.floor(rounded);
+  const hasHalf = rounded - full >= 0.5;
 
   return (
     <div

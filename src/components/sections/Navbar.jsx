@@ -107,7 +107,9 @@ export default function Navbar() {
           </ul>
 
           <div className="hidden md:block">
-            <Button variant="secondary" size="sm">Masuk</Button>
+            <Link href="/daftar">
+              <Button variant="secondary" size="sm" as="span">Masuk</Button>
+            </Link>
           </div>
 
           <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 text-primary hover:text-text-on-dark transition-colors" aria-label="Toggle menu">
@@ -127,7 +129,9 @@ export default function Navbar() {
               ))}
             </ul>
             <div className="mt-4 px-2 menu-slide-down" style={{ animationDelay: "0.2s" }}>
-              <Button variant="secondary" size="md" className="w-full">Masuk</Button>
+              <Link href="/daftar">
+                <Button variant="secondary" size="md" as="span" className="w-full">Masuk</Button>
+              </Link>
             </div>
           </div>
         )}

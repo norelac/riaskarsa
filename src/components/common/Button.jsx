@@ -17,11 +17,20 @@ export default function Button({
   variant = "primary",
   size = "md",
   href,
+  as,
   children,
   className = "",
   ...props
 }) {
   const baseClass = `inline-flex items-center justify-center gap-2 rounded-full font-medium font-sans transition-colors duration-150 focus:outline-none ${variants[variant]} ${sizes[size]} ${className}`;
+
+  if (as === "span") {
+    return (
+      <span className={baseClass} {...props}>
+        {children}
+      </span>
+    );
+  }
 
   if (href) {
     return (

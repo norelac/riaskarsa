@@ -24,7 +24,7 @@ export default function CtaSection() {
             lebih luas, dan dukungan penuh komunitas.
           </p>
           <Link href="/daftar">
-            <Button variant="primary" size="md" className="!font-normal tracking-[0.32px]">
+            <Button variant="primary" size="md" as="span" className="!font-normal tracking-[0.32px]">
               GABUNG KOMUNITAS
             </Button>
           </Link>

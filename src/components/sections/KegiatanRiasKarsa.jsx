@@ -84,7 +84,7 @@ export default function KegiatanRiasKarsa() {
                   {act.description}
                 </p>
                 <Link href={act.ctaHref} className="mt-auto inline-flex">
-                  <Button variant="secondary" size="sm" className="w-full">
+                  <Button variant="secondary" size="sm" as="span" className="w-full">
                     {act.ctaLabel} <ArrowRight size={13} />
                   </Button>
                 </Link>

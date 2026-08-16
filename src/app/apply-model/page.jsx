@@ -4,10 +4,14 @@ import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Button from "@/components/common/Button";
 import { ArrowLeft } from "lucide-react";
-import { openCalls } from "@/data/openCalls";
+import { workshopSchedule } from "@/data/workshopSchedule";
 
 const inputClass =
   "w-full px-3 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all";
+const errorInputClass =
+  "w-full px-3 py-2.5 text-sm font-sans bg-background border border-badge-error rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-badge-error focus:ring-[3px] focus:ring-primary-ring outline-none transition-all";
+
+const WA_NUMBER = "6281234567890";
 
 function ApplyModelContent() {
   const router = useRouter();
@@ -16,11 +20,31 @@ function ApplyModelContent() {
   const [form, setForm] = useState({
     name: "", email: "", phone: "", portfolio: "", openCallId: preselectedId,
   });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  const validate = () => {
+    const nextErrors = {};
+    if (!form.name.trim()) nextErrors.name = "Nama lengkap wajib diisi.";
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) nextErrors.email = "Format email tidak valid.";
+    if (!/^08\d{8,12}$/.test(form.phone.replace(/[\s-]/g, "")))
+      nextErrors.phone = "Nomor WhatsApp tidak valid (contoh: 081234567890).";
+    if (!form.openCallId) nextErrors.openCallId = "Pilih open call yang diminati.";
+    return nextErrors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const nextErrors = validate();
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
+    const selectedCall = workshopSchedule.find((c) => c.id === Number(form.openCallId));
+    const message = encodeURIComponent(
+      `Halo Rias Karsa, saya ingin apply sebagai model freelance.\n\nNama: ${form.name}\nEmail: ${form.email}\nWhatsApp: ${form.phone}\nOpen Call: ${selectedCall ? selectedCall.title + " (" + selectedCall.date + ")" : ""}\nPortofolio: ${form.portfolio || "-"}`
+    );
+    window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, "_blank");
     router.push("/terima-kasih?act=apply-model");
   };
 
@@ -35,33 +59,38 @@ function ApplyModelContent() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
+      <form onSubmit={handleSubmit} noValidate className="bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
         <div>
-          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">Nama Lengkap</label>
-          <input type="text" name="name" required value={form.name} onChange={handleChange}
-            placeholder="Masukkan nama lengkap" className={inputClass} />
+          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="name">Nama Lengkap</label>
+          <input id="name" type="text" name="name" required value={form.name} onChange={handleChange}
+            placeholder="Masukkan nama lengkap" className={errors.name ? errorInputClass : inputClass} />
+          {errors.name && <p className="text-xs text-badge-error mt-1.5">{errors.name}</p>}
         </div>
         <div>
-          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">Email</label>
-          <input type="email" name="email" required value={form.email} onChange={handleChange}
-            placeholder="contoh@email.com" className={inputClass} />
+          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="email">Email</label>
+          <input id="email" type="email" name="email" required value={form.email} onChange={handleChange}
+            placeholder="contoh@email.com" className={errors.email ? errorInputClass : inputClass} />
+          {errors.email && <p className="text-xs text-badge-error mt-1.5">{errors.email}</p>}
         </div>
         <div>
-          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">No. WhatsApp</label>
-          <input type="tel" name="phone" required value={form.phone} onChange={handleChange}
-            placeholder="08xxxxxxxxxx" className={inputClass} />
+          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="phone">No. WhatsApp</label>
+          <input id="phone" type="tel" name="phone" required value={form.phone} onChange={handleChange}
+            placeholder="08xxxxxxxxxx" className={errors.phone ? errorInputClass : inputClass} />
+          {errors.phone && <p className="text-xs text-badge-error mt-1.5">{errors.phone}</p>}
         </div>
         <div>
-          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">Open Call yang Diminati</label>
-          <select name="openCallId" value={form.openCallId} onChange={handleChange} required className={inputClass}>
-            {openCalls.map((call) => (
+          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="openCallId">Open Call yang Diminati</label>
+          <select id="openCallId" name="openCallId" value={form.openCallId} onChange={handleChange} required className={errors.openCallId ? errorInputClass : inputClass}>
+            <option value="" disabled>Pilih Open Call</option>
+            {workshopSchedule.map((call) => (
               <option key={call.id} value={call.id}>{call.title} — {call.date}</option>
             ))}
           </select>
+          {errors.openCallId && <p className="text-xs text-badge-error mt-1.5">{errors.openCallId}</p>}
         </div>
         <div>
-          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">Link Portfolio (Opsional)</label>
-          <input type="url" name="portfolio" value={form.portfolio} onChange={handleChange}
+          <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="portfolio">Link Portfolio (Opsional)</label>
+          <input id="portfolio" type="url" name="portfolio" value={form.portfolio} onChange={handleChange}
             placeholder="https://instagram.com/..." className={inputClass} />
         </div>
         <Button type="submit" variant="primary" size="md" className="w-full mt-1">

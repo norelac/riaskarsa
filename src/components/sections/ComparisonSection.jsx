@@ -112,7 +112,7 @@ export default function ComparisonSection() {
                     Bergabung dengan lebih dari 1.200 MUA tersertifikasi
                   </p>
                   <Link href="/sertifikasi" className="inline-flex">
-                    <Button variant="primary" size="md" className="w-full !bg-primary-ink !text-primary hover:!bg-primary-ink/90">
+                    <Button variant="primary" size="md" as="span" className="w-full !bg-primary-ink !text-primary hover:!bg-primary-ink/90">
                       Mulai Sekarang
                     </Button>
                   </Link>

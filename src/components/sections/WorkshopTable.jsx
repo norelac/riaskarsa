@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronUp, MapPin, CalendarDays, BadgeCheck } from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronUp, MapPin, CalendarDays, BadgeCheck } from "lucide-react";
 import { workshopSchedule } from "@/data/workshopSchedule";
 import Badge from "@/components/common/Badge";
 import Button from "@/components/common/Button";
@@ -79,8 +79,8 @@ export default function WorkshopTable() {
                   </td>
                   <td className="px-5 py-6 border-t-[0.5px] border-primary">
                     {item.status === "open" ? (
-                      <Link href="/apply-model">
-                        <Button variant="primary" size="sm">
+                      <Link href={`/apply-model?openCall=${item.id}`}>
+                        <Button variant="primary" size="sm" as="span">
                           Daftar Model
                         </Button>
                       </Link>
@@ -159,8 +159,8 @@ export default function WorkshopTable() {
                   </span>
                 </div>
                 {!isFull && (
-                  <Link href="/apply-model">
-                    <Button variant="primary" size="md" className="w-full">
+                  <Link href={`/apply-model?openCall=${item.id}`}>
+                    <Button variant="primary" size="md" as="span" className="w-full">
                       Daftar Model
                     </Button>
                   </Link>
@@ -177,7 +177,7 @@ export default function WorkshopTable() {
             className="inline-flex items-center gap-1.5 text-xs font-medium text-primary font-sans hover:text-primary-hover transition-colors"
           >
             {showAll ? "SEMBUNYIKAN JADWAL" : "LIHAT SEMUA JADWAL"}
-            {showAll ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            {showAll ? <ChevronUp size={14} /> : <ChevronRight size={14} />}
           </button>
         </div>
       </div>

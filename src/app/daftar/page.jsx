@@ -2,15 +2,21 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Button from "@/components/common/Button";
 import { ArrowLeft } from "lucide-react";
 
 const inputClass =
   "w-full px-3 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all";
+const errorInputClass =
+  "w-full px-3 py-2.5 text-sm font-sans bg-background border border-badge-error rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-badge-error focus:ring-[3px] focus:ring-primary-ring outline-none transition-all";
+
+const WA_NUMBER = "6281234567890";
 
 export default function DaftarPage() {
   const router = useRouter();
   const [form, setForm] = useState({ name: "", email: "", phone: "", role: "MUA Pemula", password: "" });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -19,8 +25,26 @@ export default function DaftarPage() {
     else router.push("/");
   };
 
+  const validate = () => {
+    const nextErrors = {};
+    if (!form.name.trim()) nextErrors.name = "Nama lengkap wajib diisi.";
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) nextErrors.email = "Format email tidak valid.";
+    if (!/^08\d{8,12}$/.test(form.phone.replace(/[\s-]/g, "")))
+      nextErrors.phone = "Nomor WhatsApp tidak valid (contoh: 081234567890).";
+    if (form.password.length < 8) nextErrors.password = "Password minimal 8 karakter.";
+    return nextErrors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const nextErrors = validate();
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
+    const message = encodeURIComponent(
+      `Halo Rias Karsa, saya ingin mendaftar akun sebagai ${form.role}.\n\nNama: ${form.name}\nEmail: ${form.email}\nWhatsApp: ${form.phone}`
+    );
+    window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, "_blank");
     router.push("/terima-kasih?act=register");
   };
 
@@ -47,40 +71,45 @@ export default function DaftarPage() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
+        <form onSubmit={handleSubmit} noValidate className="bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
           <div>
-            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">Nama Lengkap</label>
-            <input type="text" name="name" required value={form.name} onChange={handleChange}
-              placeholder="Masukkan nama lengkap" className={inputClass} />
+            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="name">Nama Lengkap</label>
+            <input id="name" type="text" name="name" required value={form.name} onChange={handleChange}
+              placeholder="Masukkan nama lengkap" className={errors.name ? errorInputClass : inputClass} />
+            {errors.name && <p className="text-xs text-badge-error mt-1.5">{errors.name}</p>}
           </div>
           <div>
-            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">Email</label>
-            <input type="email" name="email" required value={form.email} onChange={handleChange}
-              placeholder="contoh@email.com" className={inputClass} />
+            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="email">Email</label>
+            <input id="email" type="email" name="email" required value={form.email} onChange={handleChange}
+              placeholder="contoh@email.com" className={errors.email ? errorInputClass : inputClass} />
+            {errors.email && <p className="text-xs text-badge-error mt-1.5">{errors.email}</p>}
           </div>
           <div>
-            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">No. WhatsApp</label>
-            <input type="tel" name="phone" required value={form.phone} onChange={handleChange}
-              placeholder="08xxxxxxxxxx" className={inputClass} />
+            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="phone">No. WhatsApp</label>
+            <input id="phone" type="tel" name="phone" required value={form.phone} onChange={handleChange}
+              placeholder="08xxxxxxxxxx" className={errors.phone ? errorInputClass : inputClass} />
+            {errors.phone && <p className="text-xs text-badge-error mt-1.5">{errors.phone}</p>}
           </div>
           <div>
-            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">Saya mendaftar sebagai</label>
-            <select name="role" value={form.role} onChange={handleChange} className={inputClass}>
+            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="role">Saya mendaftar sebagai</label>
+            <select id="role" name="role" value={form.role} onChange={handleChange} className={inputClass}>
               <option>MUA Pemula</option>
               <option>Model Freelance</option>
               <option>Calon Klien</option>
             </select>
           </div>
           <div>
-            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5">Password</label>
-            <input type="password" name="password" required value={form.password} onChange={handleChange}
-              placeholder="Minimal 8 karakter" className={inputClass} />
+            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="password">Password</label>
+            <input id="password" type="password" name="password" minLength={8} required value={form.password} onChange={handleChange}
+              placeholder="Minimal 8 karakter" className={errors.password ? errorInputClass : inputClass} />
+            {errors.password && <p className="text-xs text-badge-error mt-1.5">{errors.password}</p>}
           </div>
           <Button type="submit" variant="primary" size="md" className="w-full mt-1">
             Daftar Sekarang
           </Button>
           <p className="text-xs text-text-on-dark/60 text-center">
-            Sudah punya akun? <span className="text-primary font-medium cursor-pointer hover:text-primary-hover">Masuk</span>
+            Sudah punya akun?{" "}
+            <Link href="/daftar" className="text-primary font-medium hover:text-primary-hover transition-colors">Masuk</Link>
           </p>
         </form>
       </div>

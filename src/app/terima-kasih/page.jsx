@@ -51,16 +51,15 @@ function ThankYouContent() {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <button onClick={handleBack}>
-            <Button variant="primary" size="md" className="w-full sm:w-auto">
-              Kembali
-            </Button>
-          </button>
-          <a href="https://instagram.com/rias.karsa.community" target="_blank" rel="noopener noreferrer">
-            <Button variant="secondary" size="md" className="w-full sm:w-auto">
-              Ikuti Komunitas
-            </Button>
-          </a>
+          <Button variant="primary" size="md" onClick={handleBack} className="w-full sm:w-auto">
+            Kembali
+          </Button>
+          <Button variant="secondary" size="md"
+            href="https://instagram.com/rias.karsa.community"
+            target="_blank" rel="noopener noreferrer"
+            className="w-full sm:w-auto">
+            Ikuti Komunitas
+          </Button>
         </div>
 
         {/* Footer note */}

@@ -9,9 +9,9 @@ const navLinks = [
 ];
 
 const legalLinks = [
-  { label: "Syarat & Ketentuan", href: "#" },
-  { label: "Kebijakan Privasi", href: "#" },
-  { label: "Kode Etik", href: "#" },
+  { label: "Syarat & Ketentuan", href: "/#faq" },
+  { label: "Kebijakan Privasi", href: "/#faq" },
+  { label: "Kode Etik", href: "/#faq" },
 ];
 
 const contactLinks = [

@@ -93,14 +93,14 @@ export default function HeroSection() {
       {/* Carousel Arrows */}
       <button
         onClick={prev}
-        className="hidden sm:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 items-center justify-center rounded-full border border-primary/30 bg-supporting-dark/50 backdrop-blur-sm text-primary hover:bg-primary hover:text-primary-ink hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
+        className="hidden sm:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-9 h-9 lg:w-10 lg:h-10 items-center justify-center rounded-full border border-primary/30 bg-supporting-dark/50 backdrop-blur-sm text-primary hover:bg-primary hover:text-primary-ink hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
         aria-label="Foto sebelumnya"
       >
         <ChevronLeft size={18} />
       </button>
       <button
         onClick={next}
-        className="hidden sm:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 items-center justify-center rounded-full border border-primary/30 bg-supporting-dark/50 backdrop-blur-sm text-primary hover:bg-primary hover:text-primary-ink hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
+        className="hidden sm:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-9 h-9 lg:w-10 lg:h-10 items-center justify-center rounded-full border border-primary/30 bg-supporting-dark/50 backdrop-blur-sm text-primary hover:bg-primary hover:text-primary-ink hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
         aria-label="Foto berikutnya"
       >
         <ChevronRight size={18} />
@@ -119,7 +119,7 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/#katalog">
-                <Button variant="primary" size="lg" className="w-full sm:w-auto">
+                <Button variant="primary" size="lg" as="span" className="w-full sm:w-auto">
                   Cari MUA
                 </Button>
               </Link>

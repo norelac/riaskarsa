@@ -1,17 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { MapPin, BadgeCheck, Star, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import useFilter from "@/hooks/useFilter";
 import { muas } from "@/data/muas";
-import { formatRupiah } from "@/utils/formatters";
-import Button from "@/components/common/Button";
-import Image from "next/image";
+import MuaCard from "@/components/common/MuaCard";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
+const selectClass =
+  "appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-background border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer";
+
 export default function DirectorySection() {
-  const [showAll, setShowAll] = useState(false);
   const headerRef = useScrollReveal();
   const filterRef = useScrollReveal();
   const gridRef = useScrollReveal({ threshold: 0.05 });
@@ -25,7 +24,7 @@ export default function DirectorySection() {
     resetFilters,
   } = useFilter(muas);
 
-  const visibleList = showAll ? filteredList : filteredList.slice(0, 3);
+  const visibleList = filteredList.slice(0, 3);
 
   return (
     <section id="katalog" className="bg-surface-dark section-pad scroll-mt-24">
@@ -49,9 +48,10 @@ export default function DirectorySection() {
         >
           <div className="relative w-full sm:w-auto">
             <select
+              aria-label="Filter lokasi"
               value={filters.city}
               onChange={(e) => setCity(e.target.value)}
-              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-background border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className={selectClass}
             >
               <option value="all">Lokasi: Semua</option>
               <option value="Semarang">Semarang</option>
@@ -61,15 +61,16 @@ export default function DirectorySection() {
               <option value="Demak">Demak</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-on-dark/60">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              <ChevronDown size={12} />
             </div>
           </div>
-          
+
           <div className="relative w-full sm:w-auto">
             <select
+              aria-label="Filter gaya"
               value={filters.style}
               onChange={(e) => setStyle(e.target.value)}
-              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-background border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className={selectClass}
             >
               <option value="all">Gaya: Semua</option>
               <option value="Soft Glam">Soft Glam</option>
@@ -79,15 +80,16 @@ export default function DirectorySection() {
               <option value="Traditional Sunda/Jawa">Traditional Sunda/Jawa</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-on-dark/60">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              <ChevronDown size={12} />
             </div>
           </div>
 
           <div className="relative w-full sm:w-auto">
             <select
+              aria-label="Filter harga"
               value={filters.priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="appearance-none w-full sm:w-auto h-11 pl-5 pr-10 text-sm font-sans font-medium text-text-on-dark bg-background border border-border rounded-full focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all cursor-pointer"
+              className={selectClass}
             >
               <option value="all">Harga: Semua</option>
               <option value="low">Budget (&lt; Rp 500rb)</option>
@@ -95,7 +97,7 @@ export default function DirectorySection() {
               <option value="high">Premium (&gt; Rp 1.5jt)</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-on-dark/60">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              <ChevronDown size={12} />
             </div>
           </div>
         </div>
@@ -106,74 +108,7 @@ export default function DirectorySection() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {visibleList.map((mua) => (
-              <Link
-                key={mua.id}
-                href={`/mua/${mua.id}`}
-                className="group card-hover bg-background border border-border rounded-[20px] overflow-hidden flex flex-col"
-              >
-                <div className="relative aspect-[4/3] bg-background border-b border-border overflow-hidden">
-                  <Image
-                    src={mua.image}
-                    alt={mua.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  />
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5">
-                    <BadgeCheck size={14} className="text-primary" />
-                    <span className="text-[10px] font-medium tracking-wide text-text-on-dark">
-                      TERVERIFIKASI
-                    </span>
-                  </div>
-                  <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5">
-                    <MapPin size={13} className="text-primary" />
-                    <span className="text-[11px] font-medium text-text-on-dark">
-                      {mua.city}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5 flex flex-col gap-3 flex-1">
-                  <div className="flex items-start justify-between gap-2">
-                    <h4 className="heading-card group-hover:text-primary-hover transition-colors">
-                      {mua.name}
-                    </h4>
-                    {mua.isCertified && (
-                      <span className="flex items-center gap-1 rounded-full bg-primary/10 border border-primary/30 px-2.5 py-1 text-[10px] font-medium text-primary">
-                        <BadgeCheck size={11} />
-                        Sertifikat
-                      </span>
-                    )}
-                  </div>
-                  <span className="text-xs font-light text-supporting-light">
-                    {mua.style} · Pengalaman {mua.experience}
-                  </span>
-                  <div className="flex flex-wrap gap-1.5 mt-1">
-                    {mua.specialties.map((spec) => (
-                      <span
-                        key={spec}
-                        className="text-[11px] font-light px-2 py-0.5 bg-surface-dark rounded-full text-supporting-light border border-primary/30"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-auto pt-3 border-t border-primary/20 flex items-center justify-between">
-                    <span className="text-base text-primary font-normal">
-                      {formatRupiah(mua.price)}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-xs text-text-on-dark/60">
-                      <Star size={13} className="text-primary fill-primary" />
-                      <span className="font-medium text-text-on-dark">{mua.rating}</span>
-                      <span className="text-text-on-dark/50">({mua.reviews})</span>
-                    </span>
-                  </div>
-                  <div className="mt-3 text-center">
-                    <Button variant="secondary" size="sm" className="w-full group-hover:bg-primary/10">
-                      LIHAT SELENGKAPNYA <ArrowRight size={13} />
-                    </Button>
-                  </div>
-                </div>
-              </Link>
+              <MuaCard key={mua.id} mua={mua} />
             ))}
           </div>
         ) : (
@@ -191,17 +126,17 @@ export default function DirectorySection() {
         )}
 
         {/* CTA */}
-        <div className="mt-12 text-center">
-          {filteredList.length > 3 && (
-            <button
-              onClick={() => setShowAll((prev) => !prev)}
+        {filteredList.length > 3 && (
+          <div className="mt-12 text-center">
+            <Link
+              href="/penata-rias"
               className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
             >
-              {showAll ? "SEMBUNYIKAN" : "LIHAT SEMUA PENATA RIAS"}
-              {showAll ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-            </button>
-          )}
-        </div>
+              LIHAT SEMUA PENATA RIAS
+              <ChevronRight size={14} />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

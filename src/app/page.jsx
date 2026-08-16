@@ -6,6 +6,7 @@ import WorkshopTable from "@/components/sections/WorkshopTable";
 import DirectorySection from "@/components/sections/DirectorySection";
 import GallerySection from "@/components/sections/GallerySection";
 import ComparisonSection from "@/components/sections/ComparisonSection";
+import RoadmapSection from "@/components/sections/RoadmapSection";
 import TestimonialSection from "@/components/sections/TestimonialSection";
 import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
@@ -23,6 +24,7 @@ export default function Home() {
         <DirectorySection />
         <GallerySection />
         <ComparisonSection />
+        <RoadmapSection />
         <TestimonialSection />
         <FaqSection />
         <CtaSection />
