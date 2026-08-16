@@ -62,7 +62,7 @@ export default function RoadmapSection() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 sm:px-5 py-2 text-sm font-normal font-sans rounded-full transition-all ${
+                className={`px-4 sm:px-5 py-2.5 text-sm font-normal font-sans rounded-full transition-all ${
                   activeTab === tab
                     ? "bg-primary text-primary-ink shadow-soft"
                     : "text-primary hover:text-text-on-dark hover:bg-background"
@@ -76,7 +76,7 @@ export default function RoadmapSection() {
 
         {/* Steps */}
         <div ref={stepsRef} className="reveal relative">
-          <div className="absolute left-7 top-7 bottom-7 w-[2px] bg-border lg:hidden" />
+          <div className="absolute left-7 top-7 bottom-7 w-[2px] bg-border sm:hidden" />
           <div key={activeTab} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {current.steps.map((step, index) => (
               <div
@@ -86,12 +86,12 @@ export default function RoadmapSection() {
               >
                 <div className="relative flex-shrink-0">
                   <div className="w-14 h-14 rounded-full bg-primary text-primary-ink flex items-center justify-center shadow-soft relative z-10">
-                    <span className="font-serif text-xl font-normal">
+                    <span className="w-full h-full inline-flex items-center justify-center font-serif text-xl font-normal leading-none">
                       {index + 1}
                     </span>
                   </div>
                   {index < current.steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-7 left-full w-[calc(100%+2rem)] h-[2px] bg-border -translate-x-8" />
+                    <div className="hidden lg:block absolute top-1/2 left-full w-8 h-[2px] bg-border -translate-y-1/2" />
                   )}
                 </div>
                 <div className="sm:text-center flex-1">

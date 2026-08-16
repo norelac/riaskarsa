@@ -141,7 +141,7 @@ export default function Navbar() {
             </div>
           )}
 
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 text-primary hover:text-text-on-dark transition-colors" aria-label="Toggle menu">
+          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-3 text-primary hover:text-text-on-dark transition-colors" aria-label="Toggle menu">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -151,7 +151,7 @@ export default function Navbar() {
             <ul className="flex flex-col gap-4">
               {navLinks.map((link, index) => (
                 <li key={link.href} className="menu-slide-down" style={{ animationDelay: `${index * 0.05}s` }}>
-                  <a href={link.href} onClick={(e) => handleAnchorClick(e, link.href)} className="block text-sm font-medium text-primary/80 hover:text-primary transition-colors px-2 py-1">
+                  <a href={link.href} onClick={(e) => handleAnchorClick(e, link.href)} className="block text-sm font-medium text-primary/80 hover:text-primary transition-colors px-2 py-2.5">
                     {link.label}
                   </a>
                 </li>
@@ -165,7 +165,7 @@ export default function Navbar() {
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium text-primary/90 truncate">{user.name}</p>
-                    <button onClick={handleLogout} className="text-xs font-medium text-text-on-dark/70 hover:text-badge-error transition-colors mt-0.5">
+                    <button onClick={handleLogout} className="text-xs font-medium text-text-on-dark/70 hover:text-badge-error transition-colors mt-0.5 py-2 -my-1">
                       Keluar
                     </button>
                   </div>

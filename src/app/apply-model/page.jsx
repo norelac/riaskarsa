@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Button from "@/components/common/Button";
 import { ArrowLeft } from "lucide-react";
 import { workshopSchedule } from "@/data/workshopSchedule";
+import { getCurrentUser } from "@/lib/auth";
 
 const inputClass =
   "w-full px-3 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all";
@@ -21,6 +22,23 @@ function ApplyModelContent() {
     name: "", email: "", phone: "", portfolio: "", openCallId: preselectedId,
   });
   const [errors, setErrors] = useState({});
+  const [accountUser, setAccountUser] = useState(null);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      const user = getCurrentUser();
+      if (user) {
+        setAccountUser(user);
+        setForm((prev) => ({
+          ...prev,
+          name: user.name || "",
+          email: user.email || "",
+          phone: user.phone || "",
+        }));
+      }
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -60,6 +78,12 @@ function ApplyModelContent() {
       </div>
 
       <form onSubmit={handleSubmit} noValidate className="bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
+        {accountUser && (
+          <p className="text-xs text-text-on-dark/70 bg-background border border-border rounded-[12px] px-4 py-3">
+            Mengisi data dari akun:{" "}
+            <span className="font-medium text-primary">{accountUser.name}</span>.
+          </p>
+        )}
         <div>
           <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="name">Nama Lengkap</label>
           <input id="name" type="text" name="name" required value={form.name} onChange={handleChange}

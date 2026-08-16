@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Button from "@/components/common/Button";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { loginUser } from "@/lib/auth";
 
 const inputClass =
@@ -46,13 +46,6 @@ export default function MasukPage() {
     setFormError("");
     if (Object.keys(nextErrors).length > 0) return;
     doLogin(form.email, form.password);
-  };
-
-  const handleDemo = () => {
-    setErrors({});
-    setFormError("");
-    setForm({ email: "demo@riaskarsa.id", password: "demo1234" });
-    doLogin("demo@riaskarsa.id", "demo1234");
   };
 
   return (
@@ -101,10 +94,13 @@ export default function MasukPage() {
           <Button type="submit" variant="primary" size="md" className="w-full mt-1">
             Masuk
           </Button>
-          <Button type="button" variant="secondary" size="md" onClick={handleDemo} className="w-full">
-            <Sparkles size={14} />
-            Login Demo (Sekali Klik)
-          </Button>
+
+          <div className="bg-background border border-border rounded-[12px] px-4 py-3 flex flex-col gap-0.5">
+            <p className="text-xs font-medium text-primary">Akun demo siap dicoba</p>
+            <p className="text-xs text-text-on-dark/70">Email: demoriaskarsa@gmail.com</p>
+            <p className="text-xs text-text-on-dark/70">Password: 12345678</p>
+          </div>
+
           <p className="text-xs text-text-on-dark/60 text-center">
             Belum punya akun?{" "}
             <Link href="/daftar" className="text-primary font-medium hover:text-primary-hover transition-colors">Daftar di sini</Link>

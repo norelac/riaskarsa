@@ -161,7 +161,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-full bg-primary/15 flex items-center justify-center text-primary hover:bg-primary hover:text-text-main transition-all"
+                  className="w-11 h-11 rounded-full bg-primary/15 flex items-center justify-center text-primary hover:bg-primary hover:text-text-main transition-all"
                 >
                   <social.icon />
                 </a>

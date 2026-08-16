@@ -174,7 +174,7 @@ export default function WorkshopTable() {
         <div className="mt-10 text-center">
           <button
             onClick={() => setShowAll((prev) => !prev)}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-primary font-sans hover:text-primary-hover transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-primary font-sans hover:text-primary-hover transition-colors py-2"
           >
             {showAll ? "SEMBUNYIKAN JADWAL" : "LIHAT SEMUA JADWAL"}
             {showAll ? <ChevronUp size={14} /> : <ChevronRight size={14} />}

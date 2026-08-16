@@ -27,8 +27,7 @@ function ThankYouContent() {
   const msg = messages[act] || messages.register;
 
   const handleBack = () => {
-    if (window.history.length > 1) router.back();
-    else router.push("/");
+    router.push("/");
   };
 
   return (

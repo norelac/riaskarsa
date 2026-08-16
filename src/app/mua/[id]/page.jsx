@@ -341,7 +341,7 @@ export default function MuaDetailPage({ params }) {
       </div>
 
       {/* Mobile bottom bar */}
-      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-supporting-dark/95 backdrop-blur-sm border-t border-primary/20 px-4 py-3">
+      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-supporting-dark/95 backdrop-blur-sm border-t border-primary/20 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <div className="flex items-center justify-between gap-3 max-w-7xl mx-auto">
           <div className="min-w-0">
             <p className="text-xs text-text-on-dark/60">Mulai dari</p>
@@ -353,7 +353,7 @@ export default function MuaDetailPage({ params }) {
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 shrink-0 bg-primary text-primary-ink px-5 py-2.5 rounded-full text-xs font-semibold hover:bg-primary-hover transition-colors"
+            className="inline-flex items-center justify-center gap-2 shrink-0 bg-primary text-primary-ink px-5 py-3 rounded-full text-xs font-semibold hover:bg-primary-hover transition-colors"
           >
             <MessageCircle size={16} />
             Hubungi

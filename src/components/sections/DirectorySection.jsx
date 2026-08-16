@@ -130,7 +130,7 @@ export default function DirectorySection() {
           <div className="mt-12 text-center">
             <Link
               href="/penata-rias"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary-hover transition-colors py-2"
             >
               LIHAT SEMUA PENATA RIAS
               <ChevronRight size={14} />

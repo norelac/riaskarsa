@@ -67,24 +67,28 @@ export default function HeroSection() {
     >
       {/* Background Carousel */}
       <div ref={bgRef} className="absolute inset-y-[-120px] inset-x-[-40px] bg-supporting-dark will-change-transform">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.src}
-            className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
-              index === current ? "opacity-100" : "opacity-0"
-            }`}
-            aria-hidden={index !== current}
-          >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={index === 0}
-              className={`object-cover hero-kenburns ${index === current ? "hero-kenburns-active" : ""}`}
-              sizes="100vw"
-            />
-          </div>
-        ))}
+        {slides.map((slide, index) => {
+          const isNear = Math.abs(index - current) <= 1;
+          return isNear ? (
+            <div
+              key={slide.src}
+              className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
+                index === current ? "opacity-100" : "opacity-0"
+              }`}
+              aria-hidden={index !== current}
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                priority={index === 0}
+                decoding="async"
+                className={`object-cover hero-kenburns ${index === current ? "hero-kenburns-active" : ""}`}
+                sizes="100vw"
+              />
+            </div>
+          ) : null;
+        })}
       </div>
 
       {/* Fixed Gradient Overlay */}
@@ -148,13 +152,13 @@ export default function HeroSection() {
           </div>
 
           {/* Dots */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-4">
             {slides.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => goTo(idx)}
                 aria-label={`Ke foto ${idx + 1}`}
-                className={`rounded-full transition-all duration-300 ${
+                className={`p-4 -m-4 rounded-full transition-all duration-300 ${
                   idx === current
                     ? "w-8 h-2.5 bg-primary"
                     : "w-2.5 h-2.5 bg-primary/40 hover:bg-primary/70"

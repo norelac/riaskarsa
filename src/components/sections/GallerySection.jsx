@@ -38,7 +38,7 @@ export default function GallerySection() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 text-sm font-normal font-sans rounded-full transition-all ${
+              className={`px-4 py-2.5 text-sm font-normal font-sans rounded-full transition-all ${
                 activeTab === tab
                   ? "bg-primary text-primary-ink shadow-soft"
                   : "bg-transparent border border-primary text-primary hover:bg-primary/10"
@@ -50,7 +50,7 @@ export default function GallerySection() {
         </div>
 
         {/* Gallery Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {visibleImages.map((image, index) => (
             <div
               key={index}
@@ -79,7 +79,7 @@ export default function GallerySection() {
           <div className="mt-10 text-center">
             <Link
               href="/galeri"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary-hover transition-colors py-2"
             >
               LIHAT SEMUA
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

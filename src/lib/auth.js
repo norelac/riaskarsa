@@ -1,8 +1,8 @@
 const USERS_KEY = "rias_users";
 const SESSION_KEY = "rias_session";
 
-const DEMO_EMAIL = "demo@riaskarsa.id";
-const DEMO_PASSWORD = "demo1234";
+const DEMO_EMAIL = "demoriaskarsa@gmail.com";
+const DEMO_PASSWORD = "12345678";
 
 function hash(str) {
   let h = 0x811c9dc5;

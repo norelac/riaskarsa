@@ -22,7 +22,7 @@ export default function Button({
   className = "",
   ...props
 }) {
-  const baseClass = `inline-flex items-center justify-center gap-2 rounded-full font-medium font-sans transition-colors duration-150 focus:outline-none ${variants[variant]} ${sizes[size]} ${className}`;
+  const baseClass = `inline-flex items-center justify-center gap-2 rounded-full font-medium font-sans transition-colors duration-150 focus:outline-none active:scale-[0.97] ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (as === "span") {
     return (
