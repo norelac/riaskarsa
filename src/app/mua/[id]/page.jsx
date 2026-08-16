@@ -120,7 +120,7 @@ export default function MuaDetailPage({ params }) {
                 />
                 <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5">
                   <BadgeCheck size={14} className="text-primary" />
-                  <span className="text-[10px] font-medium tracking-wide text-text-on-dark">
+                  <span className="text-xs font-medium tracking-wide text-text-on-dark">
                     TERVERIFIKASI
                   </span>
                 </div>
@@ -182,7 +182,7 @@ export default function MuaDetailPage({ params }) {
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 {mua.portfolio.map((item, idx) => (
                   <button
-                    key={item.src}
+                    key={idx}
                     onClick={() => setLightboxIndex(idx)}
                     className="group relative aspect-[4/5] rounded-[20px] overflow-hidden bg-surface-dark border border-border card-hover cursor-pointer focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
                     aria-label={`Lihat ${item.alt}`}
@@ -227,7 +227,7 @@ export default function MuaDetailPage({ params }) {
                       <p className="text-sm font-semibold text-text-on-dark">
                         {r.name}
                       </p>
-                      <span className="text-[11px] text-text-on-dark/50">
+                      <span className="text-xs text-text-on-dark/50">
                         {r.date}
                       </span>
                     </div>
@@ -263,7 +263,7 @@ export default function MuaDetailPage({ params }) {
                       <h4 className="heading-card group-hover:text-primary-hover transition-colors">
                         {rel.name}
                       </h4>
-                      <span className="text-[11px] font-light text-supporting-light">
+                      <span className="text-xs font-light text-supporting-light">
                         {rel.style} · {rel.city}
                       </span>
                       <div className="mt-auto pt-2 flex items-center justify-between">
@@ -344,7 +344,7 @@ export default function MuaDetailPage({ params }) {
       <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-supporting-dark/95 backdrop-blur-sm border-t border-primary/20 px-4 py-3">
         <div className="flex items-center justify-between gap-3 max-w-7xl mx-auto">
           <div className="min-w-0">
-            <p className="text-[10px] text-text-on-dark/60">Mulai dari</p>
+            <p className="text-xs text-text-on-dark/60">Mulai dari</p>
             <p className="font-serif text-lg font-bold text-primary leading-tight truncate">
               {formatRupiah(mua.price)}
             </p>

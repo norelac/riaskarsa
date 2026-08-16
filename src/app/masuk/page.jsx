@@ -1,0 +1,116 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Button from "@/components/common/Button";
+import { ArrowLeft, Sparkles } from "lucide-react";
+import { loginUser } from "@/lib/auth";
+
+const inputClass =
+  "w-full px-3 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all";
+const errorInputClass =
+  "w-full px-3 py-2.5 text-sm font-sans bg-background border border-badge-error rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-badge-error focus:ring-[3px] focus:ring-primary-ring outline-none transition-all";
+
+export default function MasukPage() {
+  const router = useRouter();
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({});
+  const [formError, setFormError] = useState("");
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    if (formError) setFormError("");
+  };
+
+  const handleBack = () => {
+    if (window.history.length > 1) router.back();
+    else router.push("/");
+  };
+
+  const doLogin = (email, password) => {
+    const res = loginUser(email, password);
+    if (!res.ok) {
+      setFormError(res.error);
+      return;
+    }
+    router.push("/");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const nextErrors = {};
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) nextErrors.email = "Format email tidak valid.";
+    if (!form.password) nextErrors.password = "Password wajib diisi.";
+    setErrors(nextErrors);
+    setFormError("");
+    if (Object.keys(nextErrors).length > 0) return;
+    doLogin(form.email, form.password);
+  };
+
+  const handleDemo = () => {
+    setErrors({});
+    setFormError("");
+    setForm({ email: "demo@riaskarsa.id", password: "demo1234" });
+    doLogin("demo@riaskarsa.id", "demo1234");
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <div className="bg-supporting-dark border-b border-primary/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-text-on-dark transition-colors">
+            <ArrowLeft size={16} />
+            Kembali
+          </button>
+        </div>
+      </div>
+
+      {/* Form */}
+      <div className="max-w-lg mx-auto px-4 sm:px-6 py-12 md:py-16">
+        <div className="text-center mb-8">
+          <h1 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-3">
+            Masuk Akun Rias Karsa
+          </h1>
+          <p className="text-base text-text-on-dark/70">
+            Selamat datang kembali, para penata rias Semarang Raya.
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} noValidate className="bg-surface-dark border border-border rounded-[20px] p-6 md:p-8 shadow-soft flex flex-col gap-5">
+          <div>
+            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="email">Email</label>
+            <input id="email" type="email" name="email" required value={form.email} onChange={handleChange}
+              placeholder="contoh@email.com" className={errors.email ? errorInputClass : inputClass} />
+            {errors.email && <p className="text-xs text-badge-error mt-1.5">{errors.email}</p>}
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-text-on-dark/80 mb-1.5" htmlFor="password">Password</label>
+            <input id="password" type="password" name="password" required value={form.password} onChange={handleChange}
+              placeholder="Masukkan password" className={errors.password ? errorInputClass : inputClass} />
+            {errors.password && <p className="text-xs text-badge-error mt-1.5">{errors.password}</p>}
+          </div>
+
+          {formError && (
+            <p className="text-sm text-badge-error bg-badge-error/10 border border-badge-error/30 rounded-[12px] px-4 py-3 text-center">
+              {formError}
+            </p>
+          )}
+
+          <Button type="submit" variant="primary" size="md" className="w-full mt-1">
+            Masuk
+          </Button>
+          <Button type="button" variant="secondary" size="md" onClick={handleDemo} className="w-full">
+            <Sparkles size={14} />
+            Login Demo (Sekali Klik)
+          </Button>
+          <p className="text-xs text-text-on-dark/60 text-center">
+            Belum punya akun?{" "}
+            <Link href="/daftar" className="text-primary font-medium hover:text-primary-hover transition-colors">Daftar di sini</Link>
+          </p>
+        </form>
+      </div>
+    </div>
+  );
+}

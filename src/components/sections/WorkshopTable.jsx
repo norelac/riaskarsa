@@ -139,10 +139,10 @@ export default function WorkshopTable() {
                   </span>
                   <div className="mt-2">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[11px] text-text-on-dark/60">
+                      <span className="text-xs text-text-on-dark/60">
                         Kuota terisi
                       </span>
-                      <span className="text-[11px] font-medium text-primary">
+                      <span className="text-xs font-medium text-primary">
                         {item.spots}
                       </span>
                     </div>

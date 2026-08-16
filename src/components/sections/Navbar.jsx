@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Button from "@/components/common/Button";
+import { getCurrentUser, logoutUser } from "@/lib/auth";
 
 const navLinks = [
   { label: "Beranda", href: "#hero" },
@@ -19,6 +20,17 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#hero");
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setUser(getCurrentUser()));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  const handleLogout = () => {
+    logoutUser();
+    setUser(null);
+  };
 
   const handleScroll = () => {
     setScrolled(window.scrollY > 80);
@@ -106,11 +118,28 @@ export default function Navbar() {
             })}
           </ul>
 
-          <div className="hidden md:block">
-            <Link href="/daftar">
-              <Button variant="secondary" size="sm" as="span">Masuk</Button>
-            </Link>
-          </div>
+          {user ? (
+            <div className="hidden md:flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-primary/15 border border-primary/30 text-primary flex items-center justify-center font-serif text-sm font-bold">
+                {user.name.charAt(0).toUpperCase()}
+              </span>
+              <span className="text-sm font-medium text-primary/90 max-w-[120px] truncate">
+                {user.name}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="text-sm font-medium text-text-on-dark/70 hover:text-badge-error transition-colors"
+              >
+                Keluar
+              </button>
+            </div>
+          ) : (
+            <div className="hidden md:block">
+              <Link href="/masuk">
+                <Button variant="secondary" size="sm" as="span">Masuk</Button>
+              </Link>
+            </div>
+          )}
 
           <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 text-primary hover:text-text-on-dark transition-colors" aria-label="Toggle menu">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -129,9 +158,23 @@ export default function Navbar() {
               ))}
             </ul>
             <div className="mt-4 px-2 menu-slide-down" style={{ animationDelay: "0.2s" }}>
-              <Link href="/daftar">
-                <Button variant="secondary" size="md" as="span" className="w-full">Masuk</Button>
-              </Link>
+              {user ? (
+                <div className="flex items-center gap-3">
+                  <span className="w-9 h-9 rounded-full bg-primary/15 border border-primary/30 text-primary flex items-center justify-center font-serif text-base font-bold shrink-0">
+                    {user.name.charAt(0).toUpperCase()}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium text-primary/90 truncate">{user.name}</p>
+                    <button onClick={handleLogout} className="text-xs font-medium text-text-on-dark/70 hover:text-badge-error transition-colors mt-0.5">
+                      Keluar
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <Link href="/masuk">
+                  <Button variant="secondary" size="md" as="span" className="w-full">Masuk</Button>
+                </Link>
+              )}
             </div>
           </div>
         )}

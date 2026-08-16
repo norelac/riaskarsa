@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Button from "@/components/common/Button";
 import { ArrowLeft } from "lucide-react";
+import { registerUser } from "@/lib/auth";
 
 const inputClass =
   "w-full px-3 py-2.5 text-sm font-sans bg-background border border-primary/30 rounded-[20px] text-text-on-dark placeholder:text-text-on-dark/40 focus:border-primary focus:ring-[3px] focus:ring-primary-ring outline-none transition-all";
@@ -41,11 +42,17 @@ export default function DaftarPage() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
+    const res = registerUser(form);
+    if (!res.ok) {
+      setErrors({ email: res.error });
+      return;
+    }
+
     const message = encodeURIComponent(
       `Halo Rias Karsa, saya ingin mendaftar akun sebagai ${form.role}.\n\nNama: ${form.name}\nEmail: ${form.email}\nWhatsApp: ${form.phone}`
     );
     window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, "_blank");
-    router.push("/terima-kasih?act=register");
+    router.push("/");
   };
 
   return (
@@ -109,7 +116,7 @@ export default function DaftarPage() {
           </Button>
           <p className="text-xs text-text-on-dark/60 text-center">
             Sudah punya akun?{" "}
-            <Link href="/daftar" className="text-primary font-medium hover:text-primary-hover transition-colors">Masuk</Link>
+            <Link href="/masuk" className="text-primary font-medium hover:text-primary-hover transition-colors">Masuk</Link>
           </p>
         </form>
       </div>

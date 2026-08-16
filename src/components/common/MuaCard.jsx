@@ -22,13 +22,13 @@ export default function MuaCard({ mua }) {
         />
         <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5">
           <BadgeCheck size={14} className="text-primary" />
-          <span className="text-[10px] font-medium tracking-wide text-text-on-dark">
+          <span className="text-xs font-medium tracking-wide text-text-on-dark">
             TERVERIFIKASI
           </span>
         </div>
         <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5">
           <MapPin size={13} className="text-primary" />
-          <span className="text-[11px] font-medium text-text-on-dark">
+          <span className="text-xs font-medium text-text-on-dark">
             {mua.city}
           </span>
         </div>
@@ -39,7 +39,7 @@ export default function MuaCard({ mua }) {
             {mua.name}
           </h4>
           {mua.isCertified && (
-            <span className="flex items-center gap-1 rounded-full bg-primary/10 border border-primary/30 px-2.5 py-1 text-[10px] font-medium text-primary">
+            <span className="flex items-center gap-1 rounded-full bg-primary/10 border border-primary/30 px-2.5 py-1 text-xs font-medium text-primary">
               <BadgeCheck size={11} />
               Sertifikat
             </span>
@@ -52,7 +52,7 @@ export default function MuaCard({ mua }) {
           {mua.specialties.map((spec) => (
             <span
               key={spec}
-              className="text-[11px] font-light px-2 py-0.5 bg-surface-dark rounded-full text-supporting-light border border-primary/30"
+              className="text-xs font-light px-2 py-0.5 bg-surface-dark rounded-full text-supporting-light border border-primary/30"
             >
               {spec}
             </span>

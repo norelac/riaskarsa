@@ -72,7 +72,7 @@ export default function KegiatanRiasKarsa() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
-                <span className="absolute top-3 left-3 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5 text-[10px] font-medium tracking-wider text-primary">
+                <span className="absolute top-3 left-3 rounded-full bg-supporting-dark/80 backdrop-blur-sm px-3 py-1.5 text-xs font-medium tracking-wider text-primary">
                   {act.tag}
                 </span>
               </div>

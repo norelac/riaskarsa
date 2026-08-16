@@ -15,9 +15,9 @@ export const muas = [
     bio: "Spesialis soft glam dengan hasil natural, flawless, dan tahan lama. Ayu berpengalaman menangani lebih dari 100 klien pernikahan dan pre-wedding di area Semarang Raya dengan pendekatan personal untuk setiap bentuk wajah.",
     portfolio: [
       { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp", alt: "Tampilan pengantin soft glam" },
-      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.webp", alt: "Tampilan natural harian" },
-      { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.webp", alt: "Tampilan makeup dewy" },
-      { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.webp", alt: "Sentuhan rias tradisional" },
+      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp", alt: "Tampilan natural harian" },
+      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp", alt: "Makeup dewy segar" },
+      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp", alt: "Sentuhan rias elegan" },
     ],
   },
   {
@@ -36,9 +36,9 @@ export const muas = [
     bio: "Dedicated pada pelestarian rias adat Nusantara — Paes Ageng, Paes Solo, dan rias Sunda. Tim Beauty of Nusa telah dipercaya menangani acara adat dan resepsi di Semarang Raya dan sekitarnya.",
     portfolio: [
       { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.webp", alt: "Rias pengantin Paes Jogja" },
-      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp", alt: "Tampilan rias Sunda tradisional" },
-      { src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.webp", alt: "Penataan rias acara budaya" },
-      { src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.webp", alt: "Sesi rias pernikahan kerajaan" },
+      { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.webp", alt: "Rias Sunda tradisional" },
+      { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.webp", alt: "Penataan rias acara budaya" },
+      { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.webp", alt: "Rias pernikahan adat" },
     ],
   },
   {
@@ -57,9 +57,9 @@ export const muas = [
     bio: "MUA modern bride dengan sentuhan glam kontemporer. Bina dipercaya menangani pernikahan nasional dan internasional, dengan prioritas pada ketahanan riasan seharian dan hasil yang fotogenik.",
     portfolio: [
       { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.webp", alt: "Glam pengantin modern" },
-      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp", alt: "Sesi rias pengantin" },
-      { src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.webp", alt: "Backstage fashion show" },
-      { src: "/asset/rizky-motion-J7PfUVrNJos-unsplash 1.webp", alt: "Tampilan glam editorial" },
+      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.webp", alt: "Sesi rias pengantin" },
+      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.webp", alt: "Tampilan glam editorial" },
+      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.webp", alt: "Rias pengantin internasional" },
     ],
   },
   {
@@ -78,9 +78,9 @@ export const muas = [
     bio: "MUA muda berenergi yang fokus pada riasan hijab modern dan syar'i. Cantika melayani riasan harian, wisuda, dan acara keluarga dengan harga ramah tanpa mengorbankan kualitas.",
     portfolio: [
       { src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.webp", alt: "Tampilan hijab modern" },
-      { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.webp", alt: "Makeup natural harian" },
-      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.webp", alt: "Tampilan pengantin syar'i" },
-      { src: "/asset/rizky-motion-D_5Kf6Du6JY-unsplash 1.webp", alt: "Glow segar setiap hari" },
+      { src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.webp", alt: "Makeup natural harian" },
+      { src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.webp", alt: "Rias pengantin syar'i" },
+      { src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.webp", alt: "Glow segar setiap hari" },
     ],
   },
   {
@@ -99,9 +99,9 @@ export const muas = [
     bio: "MUA bertangan berani untuk hasil bold dramatic yang mencuri perhatian. Rara sering menangani pesta, panggung, dan editorial dengan teknik contouring dan eyeshadow yang menonjol.",
     portfolio: [
       { src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.webp", alt: "Tampilan pesta bold" },
-      { src: "/asset/rizky-motion-J7PfUVrNJos-unsplash 1.webp", alt: "Tampilan dramatis editorial" },
-      { src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp", alt: "Tampilan glam malam hari" },
-      { src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.webp", alt: "Riasan panggung" },
+      { src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.webp", alt: "Tampilan dramatis editorial" },
+      { src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.webp", alt: "Glam malam hari" },
+      { src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.webp", alt: "Riasan panggung" },
     ],
   },
   {
@@ -120,9 +120,9 @@ export const muas = [
     bio: "Pecinta Korean beauty style dengan hasil dewy, natural, dan segar. Sekar melayani riasan harian serta pre-wedding dengan teknik glass skin yang sedang tren.",
     portfolio: [
       { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.webp", alt: "Tampilan korea dewy" },
-      { src: "/asset/rizky-motion-D_5Kf6Du6JY-unsplash 1.webp", alt: "Makeup glass skin" },
-      { src: "/asset/ike-ellyana-i2K0iC1jzDw-unsplash 1.webp", alt: "Tampilan natural harian" },
-      { src: "/asset/raden-prasetya-se5YNJCokUo-unsplash 1.webp", alt: "Tampilan pre-wedding soft" },
+      { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.webp", alt: "Makeup glass skin" },
+      { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.webp", alt: "Tampilan natural harian" },
+      { src: "/asset/wherda-arsianto-6tfLsrwxbKQ-unsplash 1.webp", alt: "Pre-wedding soft" },
     ],
   },
 ];
