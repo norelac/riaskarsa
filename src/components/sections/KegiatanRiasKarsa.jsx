@@ -12,7 +12,7 @@ const activities = [
     title: "Masterclass & Sertifikasi MUA",
     description:
       "Tingkatkan kredibilitas dan teknik riasan dengan sertifikasi standar nasional industri kecantikan. Ikuti kelas bersama mentor senior dan buktikan keahlianmu.",
-    image: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.svg",
+    image: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.webp",
     ctaLabel: "LIHAT JADWAL",
     ctaHref: "#program",
   },
@@ -21,7 +21,7 @@ const activities = [
     title: "Direktori MUA Terverifikasi",
     description:
       "Tampilkan portofoliomu pada katalog direktori agar mudah diakses calon klien potensial. Dapatkan badge kepercayaan dan prioritas di halaman pencarian.",
-    image: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.svg",
+    image: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp",
     ctaLabel: "JELAJAHI KATALOG",
     ctaHref: "#katalog",
   },
@@ -30,7 +30,7 @@ const activities = [
     title: "Open Model Call",
     description:
       "Peluang kerja freelance sebagai model bagi talenta muda untuk sesi praktik dan workshop. Terhubung langsung dengan MUA profesional di Semarang Raya.",
-    image: "/asset/febrian-zakaria-dVkKzzoUJfg-unsplash 1.svg",
+    image: "/asset/febrian-zakaria-dVkKzzoUJfg-unsplash 1.webp",
     ctaLabel: "DAFTAR MODEL",
     ctaHref: "/apply-model",
   },

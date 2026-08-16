@@ -129,16 +129,16 @@ export default function Footer() {
             <div className="flex flex-col gap-5">
               <h4 className="font-sans text-base font-medium text-primary">KONTAK</h4>
               <ul className="flex flex-col gap-3">
-                {contactLinks.map((link) => (
-                  <li key={link.label}>
+                {contactLinks.map((item) => (
+                  <li key={item.href}>
                     <a
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
                       className="flex items-center gap-3 font-sans text-base text-text-on-dark hover:text-primary transition-colors"
                     >
-                      <link.Icon size={24} className="text-text-on-dark shrink-0" />
-                      {link.label}
+                      <item.Icon size={24} className="text-text-on-dark shrink-0" />
+                      {item.label}
                     </a>
                   </li>
                 ))}
@@ -148,23 +148,25 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-[100px] pt-8 border-t border-primary/20 text-center">
-          <p className="font-sans text-base leading-[25.6px] text-primary">
-            &copy; {new Date().getFullYear()} Rias Karsa Semarang, All Rights Reserved
-          </p>
-          <div className="flex items-center justify-center gap-4 mt-6">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="w-9 h-9 rounded-full bg-primary/15 flex items-center justify-center text-primary hover:bg-primary hover:text-text-main transition-all"
-              >
-                <social.icon />
-              </a>
-            ))}
+        <div className="mt-[120px] md:mt-[140px] pt-8 border-t border-primary/20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <p className="font-sans text-base leading-[25.6px] text-primary">
+              &copy; {new Date().getFullYear()} Rias Karsa Semarang, All Rights Reserved
+            </p>
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-9 h-9 rounded-full bg-primary/15 flex items-center justify-center text-primary hover:bg-primary hover:text-text-main transition-all"
+                >
+                  <social.icon />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

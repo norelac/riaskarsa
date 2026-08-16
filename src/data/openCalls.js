@@ -12,7 +12,7 @@ export const openCalls = [
       "Willing to be photographed & posted on social media",
       "Available on Sunday, 15 Sept (09:00 - 15:00)"
     ],
-    image: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.svg"
+    image: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.webp"
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const openCalls = [
       "Minimum height 160 cm",
       "No cosmetic allergies"
     ],
-    image: "/asset/febrian-zakaria-dVkKzzoUJfg-unsplash 1.svg"
+    image: "/asset/febrian-zakaria-dVkKzzoUJfg-unsplash 1.webp"
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ export const openCalls = [
       "Experience in modeling preferred",
       "Comfortable with bold & dramatic makeup styles"
     ],
-    image: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.svg"
+    image: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.webp"
   },
   {
     id: 4,
@@ -56,6 +56,6 @@ export const openCalls = [
       "Fair/Medium skin tone",
       "Friendly & patient during the 3-hour practice session"
     ],
-    image: "/asset/aritra-roy-xwaQ6FFqmLQ-unsplash 1.svg"
+    image: "/asset/aritra-roy-xwaQ6FFqmLQ-unsplash 1.webp"
   }
 ];

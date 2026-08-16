@@ -1,7 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
 import Button from "@/components/common/Button";
 import { CheckCircle } from "lucide-react";
 import { Suspense } from "react";
@@ -23,8 +22,14 @@ const messages = {
 
 function ThankYouContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const act = searchParams.get("act") || "register";
   const msg = messages[act] || messages.register;
+
+  const handleBack = () => {
+    if (window.history.length > 1) router.back();
+    else router.push("/");
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -46,11 +51,11 @@ function ThankYouContent() {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/">
+          <button onClick={handleBack}>
             <Button variant="primary" size="md" className="w-full sm:w-auto">
-              Kembali ke Beranda
+              Kembali
             </Button>
-          </Link>
+          </button>
           <a href="https://instagram.com/rias.karsa.community" target="_blank" rel="noopener noreferrer">
             <Button variant="secondary" size="md" className="w-full sm:w-auto">
               Ikuti Komunitas

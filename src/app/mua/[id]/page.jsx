@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState, use } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ArrowRight,
@@ -32,8 +33,14 @@ const priceRangeLabel = {
 
 export default function MuaDetailPage({ params }) {
   const { id } = use(params);
+  const router = useRouter();
   const mua = muas.find((m) => m.id === Number(id));
   const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const handleBack = () => {
+    if (window.history.length > 1) router.back();
+    else router.push("/#katalog");
+  };
 
   const related = useMemo(
     () => muas.filter((m) => m.id !== Number(id)).slice(0, 3),
@@ -88,13 +95,13 @@ export default function MuaDetailPage({ params }) {
       {/* Header */}
       <div className="bg-supporting-dark border-b border-primary/20">
         <div className="container-rias py-4">
-          <Link
-            href="/#katalog"
+          <button
+            onClick={handleBack}
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-text-on-dark transition-colors"
           >
             <ArrowLeft size={16} />
-            Kembali ke Direktori
-          </Link>
+            Kembali
+          </button>
         </div>
       </div>
 

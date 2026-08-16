@@ -2,7 +2,6 @@
 
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
 import Button from "@/components/common/Button";
 import { ArrowLeft } from "lucide-react";
 import { openCalls } from "@/data/openCalls";
@@ -74,14 +73,21 @@ function ApplyModelContent() {
 }
 
 export default function ApplyModelPage() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    if (window.history.length > 1) router.back();
+    else router.push("/");
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="bg-supporting-dark border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-text-on-dark transition-colors">
+          <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-text-on-dark transition-colors">
             <ArrowLeft size={16} />
-            Kembali ke Beranda
-          </Link>
+            Kembali
+          </button>
         </div>
       </div>
       <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><p className="text-text-on-dark/60">Memuat...</p></div>}>

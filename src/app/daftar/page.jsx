@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Button from "@/components/common/Button";
 import { ArrowLeft } from "lucide-react";
 
@@ -15,6 +14,11 @@ export default function DaftarPage() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  const handleBack = () => {
+    if (window.history.length > 1) router.back();
+    else router.push("/");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/terima-kasih?act=register");
@@ -25,10 +29,10 @@ export default function DaftarPage() {
       {/* Header */}
       <div className="bg-supporting-dark border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-text-on-dark transition-colors">
+          <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-text-on-dark transition-colors">
             <ArrowLeft size={16} />
-            Kembali ke Beranda
-          </Link>
+            Kembali
+          </button>
         </div>
       </div>
 

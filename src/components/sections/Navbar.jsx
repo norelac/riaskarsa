@@ -20,17 +20,27 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#hero");
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
-      const progressEl = document.getElementById("scroll-progress");
-      if (progressEl) {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = max > 0 ? (window.scrollY / max) * 100 : 0;
-        progressEl.style.width = `${percent}%`;
-      }
-    };
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 80);
+    const progressEl = document.getElementById("scroll-progress");
+    if (progressEl) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progressEl.style.width = `${percent}%`;
+    }
+  };
 
+  const handleAnchorClick = (e, href) => {
+    const id = href.replace("#", "");
+    const el = document.getElementById(id);
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -47,10 +57,11 @@ export default function Navbar() {
       if (el) observer.observe(el);
     });
 
-    handleScroll();
+    const frame = requestAnimationFrame(handleScroll);
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
     return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
       observer.disconnect();
@@ -81,6 +92,7 @@ export default function Navbar() {
                 <li key={link.href}>
                   <a
                     href={link.href}
+                    onClick={(e) => handleAnchorClick(e, link.href)}
                     className={`p-2 text-sm tracking-[0.32px] transition-colors duration-200 relative after:absolute after:bottom-0 after:left-2 after:right-2 after:h-[2px] after:bg-primary after:transition-all after:duration-300 after:origin-left after:scale-x-0 hover:after:scale-x-100 ${
                       isActive
                         ? "text-primary after:scale-x-100"
@@ -108,7 +120,7 @@ export default function Navbar() {
             <ul className="flex flex-col gap-4">
               {navLinks.map((link, index) => (
                 <li key={link.href} className="menu-slide-down" style={{ animationDelay: `${index * 0.05}s` }}>
-                  <a href={link.href} onClick={() => setIsOpen(false)} className="block text-sm font-medium text-primary/80 hover:text-primary transition-colors px-2 py-1">
+                  <a href={link.href} onClick={(e) => handleAnchorClick(e, link.href)} className="block text-sm font-medium text-primary/80 hover:text-primary transition-colors px-2 py-1">
                     {link.label}
                   </a>
                 </li>

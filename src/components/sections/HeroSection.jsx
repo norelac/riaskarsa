@@ -10,23 +10,23 @@ import useParallax from "@/hooks/useParallax";
 
 const slides = [
   {
-    src: "/asset/krisna-putra-pratama-lKF-MdtuIss-unsplash 1.svg",
+    src: "/asset/krisna-putra-pratama-lKF-MdtuIss-unsplash 1.webp",
     alt: "Bridal makeup session Rias Karsa",
   },
   {
-    src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.svg",
+    src: "/asset/ike-ellyana--lu62pdSL2s-unsplash 1.webp",
     alt: "Elegant evening makeup look",
   },
   {
-    src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.svg",
+    src: "/asset/febrian-zakaria-Fv_gjHFqJ5c-unsplash 1.webp",
     alt: "Masterclass practice session",
   },
   {
-    src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.svg",
+    src: "/asset/rendy-novantino-EUydTGTCrHo-unsplash 1.webp",
     alt: "Traditional bridal styling",
   },
   {
-    src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.svg",
+    src: "/asset/europeana-tO5tbSmdP4Q-unsplash 1.webp",
     alt: "Fashion show makeup backstage",
   },
 ];

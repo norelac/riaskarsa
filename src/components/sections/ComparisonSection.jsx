@@ -120,14 +120,6 @@ export default function ComparisonSection() {
               </div>
             </div>
           </div>
-
-          <div className="mt-10 text-center">
-            <Link href="/sertifikasi">
-              <Button variant="primary" size="lg">
-                Mulai Sertifikasi Sekarang
-              </Button>
-            </Link>
-          </div>
         </div>
       </div>
     </section>
