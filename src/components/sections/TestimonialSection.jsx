@@ -110,22 +110,22 @@ export default function TestimonialSection() {
           <div className="flex items-center justify-center gap-4 md:gap-6 mt-8 md:mt-10">
             <button
               onClick={prev}
-              className="w-11 h-11 rounded-full border border-border bg-surface text-text-main shadow-soft hover:text-primary hover:border-primary hover:bg-primary/5 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
+              className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-border bg-surface text-text-main shadow-soft hover:text-primary hover:border-primary hover:bg-primary/5 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
               aria-label="Testimoni sebelumnya"
             >
               <ChevronLeft size={18} className="mx-auto" />
             </button>
 
             {/* Dots */}
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-2 items-center">
               {testimonials.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => goTo(idx)}
-                  className={`p-5 -m-5 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-[3px] focus:ring-primary-ring ${
+                  className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-[3px] focus:ring-primary-ring ${
                     idx === current
-                      ? "bg-primary w-10"
-                      : "bg-border hover:bg-primary/30 w-3"
+                      ? "bg-primary w-6"
+                      : "bg-border hover:bg-primary/30 w-2"
                   }`}
                   aria-label={`Ke testimoni ${idx + 1}`}
                 />
@@ -134,7 +134,7 @@ export default function TestimonialSection() {
 
             <button
               onClick={next}
-              className="w-11 h-11 rounded-full border border-border bg-surface text-text-main shadow-soft hover:text-primary hover:border-primary hover:bg-primary/5 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
+              className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-border bg-surface text-text-main shadow-soft hover:text-primary hover:border-primary hover:bg-primary/5 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-[3px] focus:ring-primary-ring"
               aria-label="Testimoni berikutnya"
             >
               <ChevronRight size={18} className="mx-auto" />
