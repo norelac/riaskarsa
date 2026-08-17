@@ -39,14 +39,17 @@ MUA pemula sering kali kesulitan mendapatkan sertifikasi resmi, memperluas porto
 
 | Section / Fitur | Deskripsi Fungsi | Prioritas |
 | :--- | :--- | :--- |
-| **Header & Navigasi** | Logo, Link Navigasi (Program, Katalog, Model, Tentang), & Tombol CTA Utama. | High |
-| **Hero Section** | Headline utama, deskripsi singkat, visual banner, & CTA multi-user (*Daftar MUA / Cari MUA*). | High |
-| **Interactive Roadmap Tab** | *Toggle tab* 3 langkah alur pendaftaran untuk MUA, Model, dan Klien. | High |
-| **MUA Directory Preview** | Widget pencarian interaktif dengan filter (Kota, Style Riasan, Price Range) + 3-4 Card Profil MUA tersertifikasi. | High |
-| **Open Call Model Widget** | List/Card jadwal masterclass terdekat yang membuka lowongan model + detail kriteria & tombol *[Apply Model]*. | High |
-| **Comparison Section** | Tabel perbandingan keunggulan MUA Non-Komunitas vs MUA Tersertifikasi Rias Karsa. | Medium |
-| **Impact Stats Counter** | Statistik animasi angka (*Total MUA, Masterclass, Model Terlibat*). | Medium |
+| **Header & Navigasi** | Navbar responsif (hamburger di mobile) dengan scroll-progress & tombol CTA. | High |
+| **Hero Section** | Slider banner (carousel + Ken Burns), headline utama, CTA multi-user (*Cari MUA / Gabung Komunitas*), & statistik animasi (*MUA Terverifikasi, Masterclass, Klien*). | High |
+| **Kegiatan Rias Karsa** | Kartu program unggulan (Masterclass & Sertifikasi, Direktori MUA, Open Model Call) dengan CTA. | High |
+| **Jadwal Workshop & Open Call Model** | Tabel jadwal (desktop) / kartu (mobile) dengan kriteria, kuota terisi, & tombol *Daftar Model*. | High |
+| **MUA Directory Preview** | Pencarian interaktif dengan filter (Kota, Gaya Riasan, Price Range) + kartu profil MUA tersertifikasi. | High |
+| **Galeri Karya & Kegiatan** | Grid karya MUA dengan tab filter + halaman galeri penuh. | Medium |
+| **Comparison Section** | Perbandingan keunggulan MUA Non-Komunitas vs MUA Tersertifikasi Rias Karsa. | Medium |
+| **Detail Profil MUA** | Halaman detail: bio, spesialisasi, rating & ulasan, portofolio + lightbox, tombol kontak WhatsApp & bottom-bar mobile. | High |
 | **Testimoni & Interactive FAQ** | Carousel ulasan pengguna & FAQ interaktif berbentuk *accordion* (*expand/collapse*). | High |
+| **Autentikasi Anggota** | Registrasi & login akun (client-side), status login di navbar, prefill data pada form. | High |
+| **Form Pendaftaran** | Form sertifikasi & apply model dengan validasi + prefill pesan WhatsApp. | High |
 | **Footer & Contact** | Informasi kontak, lokasi, tautan medsos, dan hak cipta. | High |
 
 ---
@@ -65,51 +68,40 @@ MUA pemula sering kali kesulitan mendapatkan sertifikasi resmi, memperluas porto
 ```text
 rias-karsa/
 ├── public/
-│   ├── images/
-│   │   ├── hero-bg.jpg
-│   │   ├── muas/
-│   │   │   ├── mua-1.jpg
-│   │   │   └── mua-2.jpg
-│   │   ├── gallery/
-│   │   └── badges/
-│   └── icons/
+│   └── asset/                    # Gambar WebP (hero, MUA, galeri, workshop)
 ├── src/
-│   ├── app/
-│   │   ├── layout.jsx        # Root layout, meta data, & provider font
-│   │   ├── page.jsx          # Main Landing Page
-│   │   └── globals.css       # Tailwind CSS / global styles
+│   ├── app/                      # App Router
+│   │   ├── layout.jsx            # Root layout: font, metadata, viewport
+│   │   ├── page.jsx              # Landing page utama
+│   │   ├── globals.css           # Tailwind v4 + design tokens + utilities
+│   │   ├── robots.js             # robots.txt
+│   │   ├── sitemap.js            # sitemap.xml
+│   │   ├── icon.svg              # Favicon
+│   │   ├── galeri/               # Halaman galeri penuh
+│   │   ├── penata-rias/          # Direktori MUA penuh + filter
+│   │   ├── mua/[id]/             # Detail profil MUA + lightbox
+│   │   ├── daftar/               # Registrasi anggota
+│   │   ├── masuk/                # Login anggota
+│   │   ├── sertifikasi/          # Form pendaftaran sertifikasi
+│   │   ├── apply-model/          # Form open call model
+│   │   └── terima-kasih/         # Halaman konfirmasi sukses
 │   ├── components/
-│   │   ├── common/           # Komponen UI umum (Re-usable)
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   ├── Button.jsx
-│   │   │   └── Badge.jsx
-│   │   └── sections/         # Modul section landing page
-│   │       ├── HeroSection.jsx
-│   │       ├── AboutSection.jsx
-│   │       ├── RoadmapSection.jsx      # Step-by-Step Join (Interactive Toggle)
-│   │       ├── DirectorySection.jsx    # MUA Directory Preview & Filter
-│   │       ├── OpenCallSection.jsx     # Open Call Model Widget
-│   │       ├── ComparisonSection.jsx   # Benefit & Comparison Tableq
-│   │       ├── GallerySection.jsx
-│   │       ├── StatsSection.jsx        # Impact Stats Counter
-│   │       ├── TestimonialSection.jsx
-│   │       └── FaqSection.jsx          # Accordion FAQ
-│   ├── data/                 # Mock Data JSON/JS (Pengganti Backend)
-│   │   ├── muas.js           # Data list MUA, harga, rating, & lokasi
-│   │   ├── openCalls.js      # Data jadwal workshop & kriteria model
-│   │   ├── faqData.js        # Pertanyaan & jawaban FAQ
-│   │   └── testimonials.js   # Ulasan pengguna
-│   ├── hooks/                # Custom React Hooks
-│   │   └── useFilter.js      # Logic untuk filter direktori MUA
-│   └── utils/                # Helper functions (format currency, dll)
-│       └── formatters.js
-├── .eslintrc.json
+│   │   ├── common/               # UI reusable (Button, Badge, MuaCard, dll)
+│   │   └── sections/             # Section landing (Navbar, Hero, Footer, dll)
+│   ├── data/                     # Mock data (muas, workshopSchedule, galleryImages, faqData, testimonials, muaReviews)
+│   ├── hooks/                    # Custom hooks (useFilter, useScrollReveal, useParallax)
+│   ├── lib/
+│   │   └── auth.js               # Autentikasi client-side (localStorage)
+│   └── utils/
+│       └── formatters.js         # Helper format (formatRupiah)
 ├── jsconfig.json
-├── next.config.js
+├── next.config.mjs
+├── postcss.config.mjs
+├── eslint.config.mjs
 ├── package.json
-├── tailwind.config.js        # Konfigurasi warna nude/cream Rias Karsa
-└── README.md                 # Dokumentasi project untuk penilaian juri
+├── PRD.md
+├── designfix.md                  # Design token & aturan desain
+└── README.md                     # Dokumentasi proyek untuk penilaian juri
 ```
 
 ---
@@ -117,8 +109,8 @@ rias-karsa/
 ## 7. Development Milestones & Timeline
 
 * **Milestone 1:** Setup Project, Tailwind Design System & Directory Structure
-* **Milestone 2:** Penyiapan Mock Data (MUA, Open Call, FAQ, Testimoni)
-* **Milestone 3:** Slicing Static UI Sections (Navbar, Hero, About, Gallery, Footer)
-* **Milestone 4:** Implementation of Interactive Logic (Filter Directory, Toggle Roadmap, Accordion FAQ, Modal Form)
+* **Milestone 2:** Penyiapan Mock Data (MUA, Workshop/Open Call, Galeri, FAQ, Testimoni)
+* **Milestone 3:** Slicing Static UI Sections (Navbar, Hero, About, Kegiatan, Galeri, Footer)
+* **Milestone 4:** Implementasi Logika Interaktif (Filter Direktori, Accordion FAQ, Carousel, Tabs, Autentikasi & Form)
 * **Milestone 5:** Mobile Responsiveness, Cross-Browser Testing & UI Polish
-* **Milestone 6:** Final Build, Vercel/Netlify Deployment & Code Handover (.ZIP)
+* **Milestone 6:** Final Build, Vercel Deployment & Code Handover (.ZIP)
