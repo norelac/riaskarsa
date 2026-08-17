@@ -54,6 +54,16 @@ Rias Karsa adalah landing page yang menghubungkan klien dengan MUA tersertifikas
 
 ## Cara Menjalankan
 
+### Dari folder ZIP (hasil ekstrak)
+
+```bash
+cd riaskarsa
+npm install
+npm run dev
+```
+
+### Dari repository GitHub
+
 ```bash
 git clone https://github.com/norelac/riaskarsa.git
 cd riaskarsa
