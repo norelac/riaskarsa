@@ -57,7 +57,7 @@ function ThankYouContent() {
             href="https://instagram.com/rias.karsa.community"
             target="_blank" rel="noopener noreferrer"
             className="w-full sm:w-auto">
-            Ikuti Komunitas
+            Follow Social Media
           </Button>
         </div>
 
